@@ -1,25 +1,25 @@
-interface getTodayResponse {
+interface GetTodayResponse {
    success: boolean
    reason: string
    films: Film[]
 }
 
-interface getFilmResponse {
+interface GetFilmResponse {
    success: boolean
    reason: string
    film: Film
 }
 
-interface getFilmScheduleResponse {
+interface GetFilmScheduleResponse {
    success: boolean
    reason: string
    schedules: {
       date: string
-      seances: seance[]
+      seances: Seance[]
    }[]
 }
 
-interface postPaymentRequest {
+interface PostPaymentRequest {
    filmId: string
    person: {
       firstname: string
@@ -74,13 +74,15 @@ interface Film {
    }
 }
 
-interface seance {
+interface Seance {
    time: string
    hall: {
       name: string
-      places: {
-         price: number
-         type: string
-      }[][]
+      places: Place[][]
    }
+}
+
+interface Place {
+   price: number
+   type: string
 }

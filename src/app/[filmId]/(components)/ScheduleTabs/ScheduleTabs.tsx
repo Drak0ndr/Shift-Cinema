@@ -13,7 +13,7 @@ import { useOrder } from '@/contexts/orderContext/useOrder'
 import Link from 'next/link'
 
 interface Props {
-   data: getFilmScheduleResponse['schedules']
+   data: GetFilmScheduleResponse['schedules']
    filmId: string
 }
 export const ScheduleTabs = ({ data, filmId, ...props }: Props & BoxProps) => {

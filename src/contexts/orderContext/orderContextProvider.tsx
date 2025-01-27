@@ -2,7 +2,7 @@ import { ReactNode, useRef, useState } from 'react'
 import { orderContext } from './orderContext'
 
 export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
-   const details = useRef<postPaymentRequest>({
+   const details = useRef<PostPaymentRequest>({
       filmId: '',
       person: { firstname: '', lastname: '', middlename: '', phone: '' },
       debitCard: { pan: '', expireDate: '', cvv: '' },
@@ -12,7 +12,7 @@ export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
 
    const [stage, setStage] = useState(1)
 
-   const setDetails = (obj: postPaymentRequest) => {
+   const setDetails = (obj: PostPaymentRequest) => {
       details.filmId = obj.filmId
       details.person = obj.person
       details.debitCard = obj.debitCard
@@ -24,8 +24,19 @@ export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
       details.seance = { date, time }
    }
 
+   const setTickets = (matrix: { [key: number]: number[] }) => {
+      details.tickets = []
+      Object.keys(matrix).forEach((row) => {
+         matrix[+row].forEach((item, index) => {
+            if (item > 0) {
+               details.tickets.push({ row: +row, column: index + 1 })
+            }
+         })
+      })
+   }
+
    return (
-      <orderContext.Provider value={{ details, setDetails, setSeance, stage, setStage }}>
+      <orderContext.Provider value={{ details, setDetails, setSeance, setTickets, stage, setStage }}>
          {children}
       </orderContext.Provider>
    )

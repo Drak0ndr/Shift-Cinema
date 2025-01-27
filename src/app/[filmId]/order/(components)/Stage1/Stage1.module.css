@@ -1,0 +1,24 @@
+.screen {
+    margin: 0 auto;
+    max-width: 410px;
+    height: 16px;
+    background-color: #CED2DA;
+    border-radius: 16px;
+    margin-top: 8px;
+}
+
+.place {
+    width: 16px;
+    height: 16px;
+    background-color: #712D9C;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.blocked {
+    background-color: #CED2DA;
+}
+
+.place.active {
+    transform: scale(2);
+}

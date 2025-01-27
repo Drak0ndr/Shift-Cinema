@@ -1,4 +1,4 @@
-export const formatSeances = (seances: seance[]) => {
+export const formatSeances = (seances: Seance[]) => {
    const formatSeances: { [key: string]: string[] } = {}
    seances.forEach((item) => {
       formatSeances[item.hall.name] = []

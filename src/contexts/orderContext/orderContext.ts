@@ -1,9 +1,10 @@
 import { createContext } from 'react'
 
 interface OrderContext {
-   details: postPaymentRequest
-   setDetails: (details: postPaymentRequest) => void
+   details: PostPaymentRequest
+   setDetails: (details: PostPaymentRequest) => void
    setSeance: (date: string, time: string) => void
+   setTickets: (matrix: { [key: number]: number[] }) => void
    stage: number
    setStage: (stage: number) => void
 }
@@ -18,6 +19,7 @@ export const orderContext = createContext<OrderContext>({
    },
    setDetails: () => {},
    setSeance: () => {},
+   setTickets: () => {},
    stage: 0,
    setStage: () => {}
 })

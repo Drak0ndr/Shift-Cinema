@@ -12,7 +12,7 @@ import { getFilmSchedule } from '@/api/requests/getFilmSchedule'
 const Film = async ({ params }: { params: { filmId: string } }) => {
    const getFilmResponse = await getFilm(params.filmId)
    const getFilmScheduleResponse = await getFilmSchedule(params.filmId)
-   console.log(getFilmScheduleResponse.data.schedules)
+
    return (
       <>
          <Flex gap={16} mt={24} component={Link} href="/" w="fit-content">
