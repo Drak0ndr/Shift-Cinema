@@ -10,21 +10,25 @@ import { MONTHS } from '@/constants/months'
 import { formatSeances } from '@/utils/formatSeances'
 import { HALLS } from '@/constants/halls'
 import { useOrder } from '@/contexts/orderContext/useOrder'
+import Link from 'next/link'
 
 interface Props {
    data: getFilmScheduleResponse['schedules']
+   filmId: string
 }
-export const ScheduleTabs = ({ data, ...props }: Props & BoxProps) => {
+export const ScheduleTabs = ({ data, filmId, ...props }: Props & BoxProps) => {
    const [tabValue, setTabValue] = useState(data[0].date)
    const [activeBtn, setActiveBtn] = useState({ hall: '', time: '' })
-   const { setSeance } = useOrder()
+   const { details, setSeance } = useOrder()
 
    useEffect(() => {
       setActiveBtn({ hall: '', time: '' })
    }, [tabValue])
 
    useEffect(() => {
+      details.filmId = filmId
       setSeance(tabValue, activeBtn.time)
+      console.log(details)
    }, [activeBtn])
 
    return (
@@ -75,6 +79,16 @@ export const ScheduleTabs = ({ data, ...props }: Props & BoxProps) => {
                }
             })}
          </Flex>
+         <Button
+            mt={48}
+            size="md"
+            disabled={activeBtn.time ? false : true}
+            component={Link}
+            href={`/${filmId}/order`}
+            className={styles.btn_next}
+         >
+            Продолжить
+         </Button>
       </Box>
    )
 }

@@ -1,13 +1,23 @@
 import { createContext } from 'react'
 
 interface OrderContext {
-   details: postPaymentRequest | undefined
-   setDetails: (details: postPaymentRequest) => void,
+   details: postPaymentRequest
+   setDetails: (details: postPaymentRequest) => void
    setSeance: (date: string, time: string) => void
+   stage: number
+   setStage: (stage: number) => void
 }
 
 export const orderContext = createContext<OrderContext>({
-   details: undefined,
+   details: {
+      filmId: '',
+      person: { firstname: '', lastname: '', middlename: '', phone: '' },
+      debitCard: { pan: '', expireDate: '', cvv: '' },
+      seance: { date: '', time: '' },
+      tickets: []
+   },
    setDetails: () => {},
-   setSeance: () => {}
+   setSeance: () => {},
+   stage: 0,
+   setStage: () => {}
 })

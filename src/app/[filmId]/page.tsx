@@ -46,16 +46,7 @@ const Film = async ({ params }: { params: { filmId: string } }) => {
          <Title order={2} mt={48}>
             Расписание
          </Title>
-         <ScheduleTabs data={getFilmScheduleResponse.data.schedules} mt={26} />
-         <Button
-            mt={48}
-            size="md"
-            component={Link}
-            href={`/${params.filmId}/order`}
-            className={styles.btn}
-         >
-            Продолжить
-         </Button>
+         <ScheduleTabs data={getFilmScheduleResponse.data.schedules} filmId={params.filmId} mt={26} />
       </>
    )
 }
