@@ -1,0 +1,32 @@
+.grid {
+   grid-template-columns: minmax(300px, 1fr) 2fr;
+   gap: 32px;
+}
+
+.film_img {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.btn {
+    border-radius: 16px;
+    padding: 16px 112px;
+    height: auto;
+}
+
+@media (width <= 800px) {
+    .grid {
+        gap: 16px;
+    }
+}
+@media (width <= 600px) {
+   .grid {
+      grid-template-columns: 1fr;
+   }
+
+   .btn {
+    padding: 16px 0;
+    width: 100%;
+   }
+}

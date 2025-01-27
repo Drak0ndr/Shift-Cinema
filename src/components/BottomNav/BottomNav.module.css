@@ -1,0 +1,8 @@
+.bottom_nav {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    z-index: 10;
+    border-top: 1px solid #CED2DA;
+}
