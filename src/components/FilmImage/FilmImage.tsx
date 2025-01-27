@@ -1,4 +1,4 @@
-import { Box, Flex, Image, Text } from '@mantine/core'
+import { Box, BoxProps, Flex, Image, Text } from '@mantine/core'
 
 import styles from './FilmImage.module.css'
 
@@ -9,7 +9,7 @@ interface Props {
    releaseDate: string
 }
 
-export const FilmImage = ({ img, genre, country, releaseDate, ...props }: Props) => (
+export const FilmImage = ({ img, genre, country, releaseDate, ...props }: Props & BoxProps) => (
    <Box pos="relative" {...props}>
       <Image src={img} className={styles.img} />
       <Flex direction="column" className={styles.film_info}>

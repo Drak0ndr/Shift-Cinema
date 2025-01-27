@@ -3,9 +3,16 @@ import { FilmRating } from '@/components/FilmRating/FilmRating'
 import { Box, Button, Flex, SimpleGrid, Spoiler, Text, Title } from '@mantine/core'
 import { IconChevronLeft } from '@tabler/icons-react'
 import styles from './page.module.css'
-import { SheldueTabs } from './(components)/ScheduleTabs/SheldueTabs'
+import { ScheduleTabs } from './(components)/ScheduleTabs/ScheduleTabs'
 import Link from 'next/link'
-const Film = ({ params }: { params: { filmId: string } }) => {
+import { getFilm } from '@/api/requests/getFilm'
+import { URL } from '@/constants/url'
+import { getFilmSchedule } from '@/api/requests/getFilmSchedule'
+
+const Film = async ({ params }: { params: { filmId: string } }) => {
+   const getFilmResponse = await getFilm(params.filmId)
+   const getFilmScheduleResponse = await getFilmSchedule(params.filmId)
+   console.log(getFilmScheduleResponse.data.schedules)
    return (
       <>
          <Flex gap={16} mt={24} component={Link} href="/" w="fit-content">
@@ -16,28 +23,32 @@ const Film = ({ params }: { params: { filmId: string } }) => {
          </Flex>
          <SimpleGrid mt={24} className={styles.grid}>
             <Flex direction="column">
-               <FilmImage className={styles.film_img} />
+               <FilmImage
+                  img={`${URL}/${getFilmResponse.data.film.img}`}
+                  genre={getFilmResponse.data.film.genres[0]}
+                  country={getFilmResponse.data.film.country.name}
+                  releaseDate={getFilmResponse.data.film.releaseDate}
+                  className={styles.film_img}
+               />
             </Flex>
 
             <Box>
-               <Title order={1}>Уикенд с батей (16+) </Title>
+               <Title order={1}>{getFilmResponse.data.film.name}</Title>
                <Text size="sm" c="#637083">
                   Фильм
                </Text>
-               <FilmRating />
+               <FilmRating rating={Number(getFilmResponse.data.film.userRatings.kinopoisk)} />
                <Spoiler showLabel="раскрыть" hideLabel="скрыть" mt={16}>
-                  Себастьян планирует провести уикенд со своей очаровательной невестой Элли и ее семьей в
-                  их роскошном фамильном поместье, где есть собственное поле для гольфа, шикарная яхта и
-                  даже ручной павлин.
+                  {getFilmResponse.data.film.description}
                </Spoiler>
             </Box>
          </SimpleGrid>
          <Title order={2} mt={48}>
             Расписание
          </Title>
-         <SheldueTabs mt={26} />
+         <ScheduleTabs data={getFilmScheduleResponse.data.schedules} mt={26} />
          <Button
-            mt={24}
+            mt={48}
             size="md"
             component={Link}
             href={`/${params.filmId}/order`}

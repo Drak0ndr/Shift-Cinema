@@ -12,6 +12,7 @@
 }
 
 .btn {
+    min-width: 70px;
     border-radius: 14px;
     padding: 10px 16px;
     border-color: #CED2DA;
