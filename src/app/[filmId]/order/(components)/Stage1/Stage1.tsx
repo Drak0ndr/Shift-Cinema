@@ -20,6 +20,7 @@ export const Stage1 = () => {
 
    useEffect(() => {
       if (getFilmScheduleResponse.data) {
+         console.log(getFilmScheduleResponse.data.data)
          const places = getPlaces(
             details.seance.date,
             details.seance.time,
@@ -61,7 +62,7 @@ export const Stage1 = () => {
                         {indexRow + 1}
                      </Text>
                      {row.map((item, indexCol) =>
-                        item.type != 'BLOCKED' ? (
+                        item.type != 'BLOCKED' && item.type != 'PAYED' ? (
                            <Tooltip
                               key={indexCol}
                               bg="white"
@@ -87,7 +88,10 @@ export const Stage1 = () => {
                               </Flex>
                            </Tooltip>
                         ) : (
-                           <Flex key={indexCol} className={`${styles.place} ${styles.blocked}`}></Flex>
+                           <Flex
+                              key={indexCol}
+                              className={`${styles.place} ${item.type == 'BLOCKED' ? styles.blocked : styles.payed}`}
+                           ></Flex>
                         )
                      )}
                   </Flex>

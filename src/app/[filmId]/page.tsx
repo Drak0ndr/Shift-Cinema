@@ -1,6 +1,6 @@
 import { FilmImage } from '@/components/FilmImage/FilmImage'
 import { FilmRating } from '@/components/FilmRating/FilmRating'
-import { Box, Button, Flex, SimpleGrid, Spoiler, Text, Title } from '@mantine/core'
+import { Box, Flex, SimpleGrid, Spoiler, Text, Title } from '@mantine/core'
 import { IconChevronLeft } from '@tabler/icons-react'
 import styles from './page.module.css'
 import { ScheduleTabs } from './(components)/ScheduleTabs/ScheduleTabs'

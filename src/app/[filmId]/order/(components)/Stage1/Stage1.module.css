@@ -19,6 +19,10 @@
     background-color: #CED2DA;
 }
 
+.payed {
+    background-color: #bedcca;
+}
+
 .place.active {
     transform: scale(2);
 }

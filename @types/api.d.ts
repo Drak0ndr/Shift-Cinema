@@ -19,6 +19,33 @@ interface GetFilmScheduleResponse {
    }[]
 }
 
+interface PostPaymentResponse {
+   success: boolean
+   reason: string
+   order: {
+      filmName: string
+      orderNumber: number
+      tickets: {
+         filmId: string
+         row: number
+         column: number
+         seance: {
+            date: string
+            time: string
+         }
+         phone: string
+         status: string
+      }[]
+      person: {
+         firstname: string
+         lastname: string
+         middlename: string
+         phone: string
+      }
+      status: string
+   }
+}
+
 interface PostPaymentRequest {
    filmId: string
    person: {

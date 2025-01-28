@@ -1,23 +1,19 @@
 'use client'
-import { Box, Button, Flex, Image, Progress, Text, Title } from '@mantine/core'
+import { Box, Flex, Image, Progress, Text, Title } from '@mantine/core'
 import { Stage1 } from './(components)/Stage1/Stage1'
 import { Stage2 } from './(components)/Stage2/Stage2'
 import { Stage3 } from './(components)/Stage3/Stage3'
 import { Stage4 } from './(components)/Stage4/Stage4'
 import { useOrder } from '@/contexts/orderContext/useOrder'
-import { useEffect } from 'react'
 
-const Order = ({ params }: { params: { filmId: string } }) => {
-   console.log(params)
-   const { details, stage, setStage } = useOrder()
-   useEffect(() => {
-      console.log(details)
-   }, [stage])
+const Order = () => {
+   const { stage } = useOrder()
+
    return (
       <>
-         <Flex gap={24} align="center">
-            {stage == 4 && <Image src="/Success.svg" />}
-            <Title order={2} mt={48}>
+         <Flex gap={24} align="center" mt={48}>
+            {stage == 4 && <Image src="/Success.jpg" />}
+            <Title order={2}>
                {stage == 1 && 'Выбор места'}
                {stage == 2 && 'Введите ваши данные'}
                {stage == 3 && 'Введите данные карты для оплаты'}
@@ -36,7 +32,6 @@ const Order = ({ params }: { params: { filmId: string } }) => {
          {stage == 2 && <Stage2 />}
          {stage == 3 && <Stage3 />}
          {stage == 4 && <Stage4 />}
-
       </>
    )
 }
