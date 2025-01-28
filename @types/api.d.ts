@@ -69,6 +69,26 @@ interface PostPaymentRequest {
    }[]
 }
 
+interface PostOtpRespose {
+   success: boolean
+   reason: string
+   retryDelay: number
+}
+
+interface PostSigninRespose {
+   success: boolean
+   reason: string
+   user: {
+      phone: string
+      firstname: string
+      middlename: string
+      lastname: string
+      email: string
+      city: string
+   }
+   token: string
+}
+
 interface Film {
    id: string
    name: string

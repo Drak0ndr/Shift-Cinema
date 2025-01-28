@@ -5,5 +5,7 @@ export const useGetFilmScheduleQuery = (filmId: string) =>
    useQuery({
       queryKey: ['getFilmSchedule'],
       queryFn: () => getFilmSchedule(filmId),
-      refetchInterval: 30000
+      refetchInterval: 30000,
+      gcTime: 0,
+      staleTime: 0
    })
