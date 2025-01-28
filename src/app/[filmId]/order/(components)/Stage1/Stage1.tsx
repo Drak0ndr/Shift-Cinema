@@ -63,6 +63,7 @@ export const Stage1 = () => {
                      {row.map((item, indexCol) =>
                         item.type != 'BLOCKED' ? (
                            <Tooltip
+                              key={indexCol}
                               bg="white"
                               label={
                                  <>
@@ -77,7 +78,6 @@ export const Stage1 = () => {
                               <Flex
                                  justify="center"
                                  align="center"
-                                 key={indexCol}
                                  className={`${styles.place} ${selectedPlace[indexRow + 1][indexCol] ? styles.active : ''}`}
                                  onClick={() => togglePlace(indexRow + 1, indexCol)}
                               >
@@ -87,7 +87,7 @@ export const Stage1 = () => {
                               </Flex>
                            </Tooltip>
                         ) : (
-                           <Flex className={`${styles.place} ${styles.blocked}`}></Flex>
+                           <Flex key={indexCol} className={`${styles.place} ${styles.blocked}`}></Flex>
                         )
                      )}
                   </Flex>
@@ -123,7 +123,7 @@ export const Stage1 = () => {
                      const activePlaces = getActiveRowPlaces(selectedPlace[+row])
                      if (activePlaces.length > 0) {
                         return (
-                           <Text>
+                           <Text key={row}>
                               {row} ряд - {activePlaces.join(', ')}
                            </Text>
                         )
