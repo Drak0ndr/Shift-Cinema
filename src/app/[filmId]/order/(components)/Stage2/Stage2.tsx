@@ -17,7 +17,7 @@ export const Stage2 = () => {
       details.person.firstname = data.firstname
       details.person.lastname = data.lastname
       details.person.phone = data.phone.split(' ').join('')
-      setStage(stage+1)
+      setStage(stage + 1)
    }
 
    return (
@@ -65,10 +65,10 @@ export const Stage2 = () => {
             <Input placeholder="Адрес" {...register('addres')} />
          </Input.Wrapper>
          <Flex mt={24} gap={24}>
-            <Button variant="outline" size="md" radius={16} p="16px 57px" h="auto">
+            <Button variant="outline" size="md" radius={16} p="16px auto" style={{ flex: 1 }} h="auto">
                Назад
             </Button>
-            <Button size="md" radius={16} p="16px 57px" h="auto" type="submit">
+            <Button size="md" radius={16} h="auto" p="16px" style={{ flex: 1 }} type="submit">
                Продолжить
             </Button>
          </Flex>
