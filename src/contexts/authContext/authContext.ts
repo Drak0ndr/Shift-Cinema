@@ -1,0 +1,17 @@
+import { createContext } from 'react'
+
+interface AuthContext {
+   user: User | undefined
+   token: string | undefined
+   setUser: (user: User) => void
+   setToken: (token: string) => void,
+   logout: () => void
+}
+
+export const authContext = createContext<AuthContext>({
+   user: undefined,
+   token: undefined,
+   setUser: () => {},
+   setToken: () => {},
+   logout: () => {}
+})

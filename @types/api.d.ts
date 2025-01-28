@@ -89,6 +89,28 @@ interface PostSigninRespose {
    token: string
 }
 
+interface GetSessionResponse {
+   success: boolean
+   reason: string
+   user: User
+}
+
+interface PatchProfileResponce {
+   success: true
+   reason: 'string'
+   user: User
+}
+
+interface User {
+   _id: string
+   phone: string
+   firstname: string
+   lastname: string
+   middlename: string
+   email?: string
+   city?: string
+}
+
 interface Film {
    id: string
    name: string
