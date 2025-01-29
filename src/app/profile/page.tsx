@@ -22,6 +22,7 @@ const Profile = () => {
    } = useForm()
 
    useEffect(() => {
+      console.log(user)
       reset({
          lastname: user?.lastname,
          firstname: user?.firstname,

@@ -24,11 +24,11 @@ export const Navigation = () => (
                style={{ transform: 'translate(-8px)' }}
             />
          </Flex>
-         <Flex align="center" gap={16}>
+         <Flex align="center" gap={16} component={Link} href="/profile">
             <Image src="/User.svg" width={24} height={24} alt="user"></Image>
             <Text>Профиль</Text>
          </Flex>
-         <Flex align="center" gap={16}>
+         <Flex align="center" gap={16} component={Link} href="/tickets">
             <Image src="/Ticket.svg" width={24} height={24} alt="user"></Image>
             <Text>Билеты</Text>
          </Flex>

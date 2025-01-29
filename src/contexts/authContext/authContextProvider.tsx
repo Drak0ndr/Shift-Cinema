@@ -11,22 +11,30 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
    const logout = () => {
       setToken(undefined)
       setUser(undefined)
-      document.cookie = `authToken=undefined`
+      document.cookie = 'authToken='
       console.log('logout')
    }
 
-   useEffect(() => {
-      const token = document.cookie.replace(/(?:(?:^|.*;\s*)authToken\s*\=\s*([^;]*).*$)|^.*$/, '$1')
-      getSession(token)
-         .then((data) => {
-            setUser(data.data.user)
-         })
-         .catch(() => {})
+   const login = (token: string) => {
       setToken(token)
-   }, [])
+   }
+
+   useEffect(() => {
+      const localToken =
+         document.cookie.replace(/(?:(?:^|.*;\s*)authToken\s*\=\s*([^;]*).*$)|^.*$/, '$1') 
+      if (localToken) {
+         getSession(localToken)
+            .then((data) => {
+               console.log(localToken, data)
+               setUser(data.data.user)
+            })
+            .catch(() => {})
+         setToken(localToken)
+      }
+   }, [token])
 
    return (
-      <authContext.Provider value={{ user, token, setUser, setToken, logout }}>
+      <authContext.Provider value={{ user, token, setUser, setToken, logout, login }}>
          {children}
       </authContext.Provider>
    )

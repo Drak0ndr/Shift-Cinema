@@ -9,10 +9,12 @@ import InputMask from 'react-input-mask'
 
 import { postOtp } from '@/api/requests/postOtp'
 import { postSignin } from '@/api/requests/postSignin'
+import { useAuth } from '@/contexts/authContext/useAuth'
 
 export const AuthForm = () => {
+   const { login } = useAuth()
    const router = useRouter()
-   
+
    const [stage, setStage] = useState(1)
    const [retryDelay, setRetryDelay] = useState(0)
 
@@ -42,6 +44,7 @@ export const AuthForm = () => {
          try {
             const postSigninRespose = await postSignin(data.phone.replaceAll(' ', ''), data.code)
             document.cookie = `authToken=${postSigninRespose.data.token}`
+            login(postSigninRespose.data.token)
             router.replace('/')
          } catch {
             setError('code', { type: 'invalid' })
