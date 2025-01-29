@@ -82,11 +82,11 @@ export const ScheduleTabs = ({ data, filmId, ...props }: Props & BoxProps) => {
          </Flex>
          <Button
             mt={48}
-            size="md"
+            w="100%"
+            maw={328}
             disabled={activeBtn.time ? false : true}
             component={Link}
             href={`/${filmId}/order`}
-            className={styles.btn_next}
          >
             Продолжить
          </Button>

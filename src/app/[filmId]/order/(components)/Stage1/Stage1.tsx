@@ -150,15 +150,12 @@ export const Stage1 = () => {
                ₽
             </Title>
          </Flex>
-         <Flex mt={24} gap={24}>
-            <Button variant="outline" size="md" radius={16} p="16px 57px" h="auto">
+         <Flex mt={24} gap={24} wrap="wrap-reverse">
+            <Button variant="default" p="16px 57px">
                Назад
             </Button>
             <Button
-               size="md"
-               radius={16}
                p="16px 57px"
-               h="auto"
                onClick={() => {
                   setStage(stage + 1)
                   setTickets(selectedPlace ? selectedPlace : [])

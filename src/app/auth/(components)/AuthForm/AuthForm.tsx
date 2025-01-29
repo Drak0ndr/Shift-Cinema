@@ -12,8 +12,10 @@ import { postSignin } from '@/api/requests/postSignin'
 
 export const AuthForm = () => {
    const router = useRouter()
+   
    const [stage, setStage] = useState(1)
    const [retryDelay, setRetryDelay] = useState(0)
+
    const timer = useInterval(
       () => (retryDelay >= 0 ? setRetryDelay(retryDelay - 1000) : timer.stop()),
       1000

@@ -1,6 +1,8 @@
 import { ReactNode } from 'react'
-import { LayoutOrderProvider } from './(components)/LayoutOrderProvider/LayoutOrderProvider'
+
 import { getFilm } from '@/api/requests/getFilm'
+
+import { LayoutOrderProvider } from './(components)/LayoutOrderProvider/LayoutOrderProvider'
 
 export async function generateMetadata({ params }: { params: { filmId: string } }) {
    const getFilmResponse = await getFilm(params.filmId)

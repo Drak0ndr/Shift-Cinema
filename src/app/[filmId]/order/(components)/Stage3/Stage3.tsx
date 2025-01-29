@@ -1,9 +1,10 @@
 'use client'
 
-import { useOrder } from '@/contexts/orderContext/useOrder'
 import { Box, Button, Card, Flex, Input } from '@mantine/core'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
+
+import { useOrder } from '@/contexts/orderContext/useOrder'
 
 export const Stage3 = () => {
    const { details, stage, setStage } = useOrder()
@@ -17,7 +18,7 @@ export const Stage3 = () => {
       details.debitCard.pan = data.pan
       details.debitCard.expireDate = data.expireDate
       details.debitCard.cvv = data.cvv
-      console.log(details)
+
       setStage(stage + 1)
    }
 
@@ -67,10 +68,10 @@ export const Stage3 = () => {
             </Flex>
          </Card>
          <Flex mt={24} gap={24}>
-            <Button variant="outline" size="md" radius={16} p="16px auto" style={{ flex: 1 }} h="auto">
+            <Button variant="default" flex={1} >
                Назад
             </Button>
-            <Button size="md" radius={16} h="auto" p="16px" style={{ flex: 1 }} type="submit">
+            <Button flex={1} type="submit">
                Оплатить
             </Button>
          </Flex>

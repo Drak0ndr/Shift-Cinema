@@ -1,7 +1,8 @@
 import { Box, Flex, Text } from '@mantine/core'
-import styles from './Navigation.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+
+import styles from './Navigation.module.css'
 
 export const Navigation = () => (
    <Box component="nav" className={styles.nav}>

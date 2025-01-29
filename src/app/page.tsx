@@ -35,11 +35,7 @@ const Home = async () => {
                      </Text>
                      <FilmRating rating={Number(item.userRatings.kinopoisk)} />
                      <Button
-                        size="md"
-                        radius={16}
-                        p="16px 32px"
                         w="100%"
-                        h="auto"
                         mt={16}
                         component={Link}
                         href={`/${item.id}`}

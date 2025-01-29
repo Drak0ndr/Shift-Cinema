@@ -1,5 +1,7 @@
 import { Rating, Text } from '@mantine/core'
+
 import styles from './FilmRating.module.css'
+
 export const FilmRating = ({ rating }: { rating: number }) => (
    <>
       <Rating

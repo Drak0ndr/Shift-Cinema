@@ -1,28 +1,23 @@
 'use client'
 
 import { Box, Button, Card, Flex, Text } from '@mantine/core'
+import Link from 'next/link'
+
+import { usePostPaymentQuery } from '@/api/hooks/usePostPaymentQuery'
+import { MONTHS } from '@/constants/months'
+import { useOrder } from '@/contexts/orderContext/useOrder'
+import { getDate } from '@/utils/getDate'
+import { getOrderPlaces } from '@/utils/getOrderPlaces'
 
 import styles from './Stage4.module.css'
-import { useOrder } from '@/contexts/orderContext/useOrder'
-import { usePostPaymentQuery } from '@/api/hooks/usePostPaymentQuery'
-import { useEffect } from 'react'
-import { getOrderPlaces } from '@/utils/getOrderPlaces'
-import { getDate } from '@/utils/getDate'
-import { MONTHS } from '@/constants/months'
-import Link from 'next/link'
 
 export const Stage4 = () => {
    const { details } = useOrder()
 
    const postPaymentResponse = usePostPaymentQuery(details)
 
-   useEffect(() => {
-      console.log(postPaymentResponse)
-   })
-
    return (
       <>
-         {' '}
          <Card withBorder className={styles.card}>
             <Box>
                <Text size="xs" c="#637083">
@@ -61,18 +56,14 @@ export const Stage4 = () => {
          </Card>
          <Flex mt={24} gap={24}>
             <Button
-               variant="outline"
-               size="md"
-               radius={16}
-               p="16px"
-               h="auto"
+               variant="default"
                miw={172}
                component={Link}
                href="/tickets"
             >
                Детали заказа
             </Button>
-            <Button size="md" radius={16} h="auto" p="16px" miw={172} component={Link} href="/">
+            <Button miw={172} component={Link} href="/">
                На главную
             </Button>
          </Flex>

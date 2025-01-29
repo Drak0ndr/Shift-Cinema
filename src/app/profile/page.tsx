@@ -13,6 +13,7 @@ import styles from './page.module.css'
 
 const Profile = () => {
    const { user, token, logout } = useAuth()
+
    const {
       register,
       handleSubmit,
@@ -45,7 +46,7 @@ const Profile = () => {
             phone: data.phone
          },
          token as string
-      ).then((data) => console.log(data))
+      )
    }
 
    return (
@@ -98,8 +99,7 @@ const Profile = () => {
          </Input.Wrapper>
          <Flex mt={24} gap={24} wrap="wrap-reverse">
             <Button
-               variant="outline"
-               size="md"
+               variant="default"
                className={styles.btn}
                onClick={() =>
                   modals.openContextModal({
@@ -115,7 +115,7 @@ const Profile = () => {
             >
                Выйти
             </Button>
-            <Button size="md" type="submit" className={styles.btn}>
+            <Button type="submit" className={styles.btn}>
                Обновить данные
             </Button>
          </Flex>
