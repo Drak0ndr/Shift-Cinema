@@ -19,10 +19,18 @@ const Profile = () => {
       handleSubmit,
       reset,
       formState: { errors }
-   } = useForm()
+   } = useForm({
+      defaultValues: {
+         lastname: user?.lastname,
+         firstname: user?.firstname,
+         middlename: user?.middlename,
+         phone: user?.phone,
+         email: user?.email,
+         addres: user?.city
+      }
+   })
 
    useEffect(() => {
-      console.log(user)
       reset({
          lastname: user?.lastname,
          firstname: user?.firstname,
