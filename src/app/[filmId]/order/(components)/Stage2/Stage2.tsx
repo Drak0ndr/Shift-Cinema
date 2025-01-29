@@ -1,9 +1,10 @@
 'use client'
 
-import { useOrder } from '@/contexts/orderContext/useOrder'
 import { Button, Flex, Input } from '@mantine/core'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
+
+import { useOrder } from '@/contexts/orderContext/useOrder'
 
 export const Stage2 = () => {
    const { details, stage, setStage } = useOrder()

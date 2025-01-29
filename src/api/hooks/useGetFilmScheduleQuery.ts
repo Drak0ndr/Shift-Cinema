@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+
 import { getFilmSchedule } from '../requests/getFilmSchedule'
 
 export const useGetFilmScheduleQuery = (filmId: string) =>

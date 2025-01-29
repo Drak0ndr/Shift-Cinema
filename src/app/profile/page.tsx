@@ -1,16 +1,15 @@
 'use client'
 
 import { Button, Flex, Input, Title } from '@mantine/core'
+import { modals } from '@mantine/modals'
+import { useEffect } from 'react'
+import { FieldValues, useForm } from 'react-hook-form'
+import InputMask from 'react-input-mask'
+
+import { patchProfile } from '@/api/requests/patchProfile'
+import { useAuth } from '@/contexts/authContext/useAuth'
 
 import styles from './page.module.css'
-import { FieldValues, useForm } from 'react-hook-form'
-import { useAuth } from '@/contexts/authContext/useAuth'
-import { use, useEffect } from 'react'
-import InputMask from 'react-input-mask'
-import { patchProfile } from '@/api/requests/patchProfile'
-import Link from 'next/link'
-import { modals } from '@mantine/modals'
-import { title } from 'process'
 
 const Profile = () => {
    const { user, token, logout } = useAuth()
@@ -58,6 +57,7 @@ const Profile = () => {
          component="form"
          onSubmit={handleSubmit(onSubmit)}
       >
+         <Title order={2}>Профиль</Title>
          <Input.Wrapper
             label="Фамилия"
             withAsterisk

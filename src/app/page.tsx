@@ -1,11 +1,13 @@
 import { Box, Button, SimpleGrid, Text, Title } from '@mantine/core'
 import type { Metadata } from 'next'
-import styles from './page.module.css'
 import Link from 'next/link'
+
+import { getToday } from '@/api/requests/getToday'
 import { FilmImage } from '@/components/FilmImage/FilmImage'
 import { FilmRating } from '@/components/FilmRating/FilmRating'
-import { getToday } from '@/api/requests/getToday'
 import { URL } from '@/constants/url'
+
+import styles from './page.module.css'
 
 export const metadata: Metadata = {
    title: 'ШИФТ CINEMA',

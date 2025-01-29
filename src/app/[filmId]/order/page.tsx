@@ -1,10 +1,12 @@
 'use client'
 import { Box, Flex, Image, Progress, Text, Title } from '@mantine/core'
+
+import { useOrder } from '@/contexts/orderContext/useOrder'
+
 import { Stage1 } from './(components)/Stage1/Stage1'
 import { Stage2 } from './(components)/Stage2/Stage2'
 import { Stage3 } from './(components)/Stage3/Stage3'
 import { Stage4 } from './(components)/Stage4/Stage4'
-import { useOrder } from '@/contexts/orderContext/useOrder'
 
 const Order = () => {
    const { stage } = useOrder()

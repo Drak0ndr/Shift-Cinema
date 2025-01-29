@@ -15,13 +15,17 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
    useEffect(() => {
       const token = document.cookie.replace(/(?:(?:^|.*;\s*)authToken\s*\=\s*([^;]*).*$)|^.*$/, '$1')
-      getSession(token).then((data) => {
-         setUser(data.data.user)
-      })
+      getSession(token)
+         .then((data) => {
+            setUser(data.data.user)
+         })
+         .catch(() => {})
       setToken(token)
    }, [])
 
    return (
-      <authContext.Provider value={{ user, token, setUser, setToken, logout }}>{children}</authContext.Provider>
+      <authContext.Provider value={{ user, token, setUser, setToken, logout }}>
+         {children}
+      </authContext.Provider>
    )
 }

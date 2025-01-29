@@ -1,16 +1,17 @@
 'use client'
 
 import { Box, BoxProps, Button, Flex, SegmentedControl, Text } from '@mantine/core'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-import styles from './ScheduleTabs.module.css'
-import { getDate } from '@/utils/getDate'
-import { WEEK_DAYS } from '@/constants/weekDays'
-import { MONTHS } from '@/constants/months'
-import { formatSeances } from '@/utils/formatSeances'
 import { HALLS } from '@/constants/halls'
+import { MONTHS } from '@/constants/months'
+import { WEEK_DAYS } from '@/constants/weekDays'
 import { useOrder } from '@/contexts/orderContext/useOrder'
-import Link from 'next/link'
+import { formatSeances } from '@/utils/formatSeances'
+import { getDate } from '@/utils/getDate'
+
+import styles from './ScheduleTabs.module.css'
 
 interface Props {
    data: GetFilmScheduleResponse['schedules']

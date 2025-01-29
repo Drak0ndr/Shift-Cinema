@@ -1,3 +1,16 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "plugins": ["simple-import-sort"],
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error"
+  },
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  }
 }

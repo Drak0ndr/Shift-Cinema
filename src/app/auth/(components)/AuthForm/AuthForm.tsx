@@ -1,13 +1,14 @@
 'use client'
 
-import { postOtp } from '@/api/requests/postOtp'
-import { postSignin } from '@/api/requests/postSignin'
 import { Button, Flex, Input, Text } from '@mantine/core'
 import { useInterval } from '@mantine/hooks'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
+
+import { postOtp } from '@/api/requests/postOtp'
+import { postSignin } from '@/api/requests/postSignin'
 
 export const AuthForm = () => {
    const router = useRouter()

@@ -1,16 +1,17 @@
 import { Box, Button, Flex, Text, Title, Tooltip } from '@mantine/core'
+import { useEffect, useState } from 'react'
+
+import { useGetFilmScheduleQuery } from '@/api/hooks/useGetFilmScheduleQuery'
+import { HALLS } from '@/constants/halls'
+import { MONTHS } from '@/constants/months'
+import { useOrder } from '@/contexts/orderContext/useOrder'
+import { calcOrderPrice } from '@/utils/calcOrderPrice'
+import { getActiveRowPlaces } from '@/utils/getActiveRowPlaces'
+import { getDate } from '@/utils/getDate'
+import { getHall } from '@/utils/getHall'
+import { getPlaces } from '@/utils/getPlaces'
 
 import styles from './Stage1.module.css'
-import { useEffect, useState } from 'react'
-import { useOrder } from '@/contexts/orderContext/useOrder'
-import { useGetFilmScheduleQuery } from '@/api/hooks/useGetFilmScheduleQuery'
-import { getPlaces } from '@/utils/getPlaces'
-import { getHall } from '@/utils/getHall'
-import { HALLS } from '@/constants/halls'
-import { getDate } from '@/utils/getDate'
-import { MONTHS } from '@/constants/months'
-import { getActiveRowPlaces } from '@/utils/getActiveRowPlaces'
-import { calcOrderPrice } from '@/utils/calcOrderPrice'
 
 export const Stage1 = () => {
    const { details, setTickets, stage, setStage } = useOrder()

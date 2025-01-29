@@ -1,4 +1,5 @@
 import { Flex, Title } from '@mantine/core'
+
 import { AuthForm } from './(components)/AuthForm/AuthForm'
 
 const Auth = () => (

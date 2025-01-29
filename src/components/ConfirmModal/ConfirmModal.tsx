@@ -1,5 +1,4 @@
-import { Button, Flex, Image, Modal, Title } from '@mantine/core'
-import { useDisclosure } from '@mantine/hooks'
+import { Button, Flex, Image, Title } from '@mantine/core'
 import type { ContextModalProps } from '@mantine/modals'
 
 interface ConfirmModalProps {
@@ -22,7 +21,7 @@ export const ConfirmModal = ({ context, id, innerProps }: ContextModalProps<Conf
             mt={40}
             w="100%"
             onClick={() => {
-               innerProps.cancelOnClick && innerProps.cancelOnClick()
+               if (innerProps.cancelOnClick) innerProps.cancelOnClick()
                context.closeModal(id)
             }}
          >
@@ -32,7 +31,7 @@ export const ConfirmModal = ({ context, id, innerProps }: ContextModalProps<Conf
             mt={16}
             w="100%"
             onClick={() => {
-               innerProps.confirmOnClick()
+               if (innerProps.confirmOnClick) innerProps.confirmOnClick()
                context.closeModal(id)
             }}
          >

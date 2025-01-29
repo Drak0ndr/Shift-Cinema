@@ -1,13 +1,15 @@
-import { FilmImage } from '@/components/FilmImage/FilmImage'
-import { FilmRating } from '@/components/FilmRating/FilmRating'
 import { Box, Flex, SimpleGrid, Spoiler, Text, Title } from '@mantine/core'
 import { IconChevronLeft } from '@tabler/icons-react'
-import styles from './page.module.css'
-import { ScheduleTabs } from './(components)/ScheduleTabs/ScheduleTabs'
 import Link from 'next/link'
+
 import { getFilm } from '@/api/requests/getFilm'
-import { URL } from '@/constants/url'
 import { getFilmSchedule } from '@/api/requests/getFilmSchedule'
+import { FilmImage } from '@/components/FilmImage/FilmImage'
+import { FilmRating } from '@/components/FilmRating/FilmRating'
+import { URL } from '@/constants/url'
+
+import { ScheduleTabs } from './(components)/ScheduleTabs/ScheduleTabs'
+import styles from './page.module.css'
 
 const Film = async ({ params }: { params: { filmId: string } }) => {
    const getFilmResponse = await getFilm(params.filmId)

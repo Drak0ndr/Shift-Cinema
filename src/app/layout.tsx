@@ -1,18 +1,19 @@
 'use client'
 
 import '@mantine/core/styles.css'
+import './globals.css'
 
 import { Box, ColorSchemeScript, MantineProvider } from '@mantine/core'
-import { theme } from '@/constants/theme'
-import { Navigation } from '@/components/Navigation/Navigation'
-import { ModalsProvider } from '@mantine/modals'
-import './globals.css'
-import { inter } from '@/constants/fonts'
 import { useMediaQuery } from '@mantine/hooks'
-import { BottomNav } from '@/components/BottomNav/BottomNav'
+import { ModalsProvider } from '@mantine/modals'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { AuthContextProvider } from '@/contexts/authContext/authContextProvider'
+
+import { BottomNav } from '@/components/BottomNav/BottomNav'
 import { ConfirmModal } from '@/components/ConfirmModal/ConfirmModal'
+import { Navigation } from '@/components/Navigation/Navigation'
+import { inter } from '@/constants/fonts'
+import { theme } from '@/constants/theme'
+import { AuthContextProvider } from '@/contexts/authContext/authContextProvider'
 
 export default function RootLayout({
    children
