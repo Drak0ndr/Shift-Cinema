@@ -28,7 +28,7 @@ export const Navigation = () => (
             <Image src="/User.svg" width={24} height={24} alt="user"></Image>
             <Text>Профиль</Text>
          </Flex>
-         <Flex align="center" gap={16} component={Link} href="/tickets">
+         <Flex align="center" gap={16} component={Link} href="/orders">
             <Image src="/Ticket.svg" width={24} height={24} alt="user"></Image>
             <Text>Билеты</Text>
          </Flex>
