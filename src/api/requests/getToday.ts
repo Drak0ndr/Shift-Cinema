@@ -1,3 +1,5 @@
 import { instance } from '../instance'
 
-export const getToday = () => instance.get<GetTodayResponse>('/cinema/today')
+
+export const getToday = ({ config }: RequestConfig) =>
+   instance.get<GetTodayResponse>('/cinema/today', config)

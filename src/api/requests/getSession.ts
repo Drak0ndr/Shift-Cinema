@@ -1,8 +1,15 @@
 import { instance } from '../instance'
 
-export const getSession = (token: string) =>
+interface GetSessionProps {
+   token: string
+}
+
+type getSessionRequestConfig = RequestConfig<GetSessionProps>
+
+export const getSession = ({ params, config }: getSessionRequestConfig) =>
    instance.get<GetSessionResponse>(`/users/session`, {
       headers: {
-         Authorization: `Bearer ${token}`
-      }
+         Authorization: `Bearer ${params.token}`
+      },
+      ...config
    })

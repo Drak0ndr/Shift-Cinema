@@ -5,7 +5,8 @@ import { getFilm } from '@/api/requests/getFilm'
 import { LayoutOrderProvider } from './(components)/LayoutOrderProvider/LayoutOrderProvider'
 
 export async function generateMetadata({ params }: { params: { filmId: string } }) {
-   const getFilmResponse = await getFilm(params.filmId)
+   const getFilmResponse = await getFilm({ params: { id: params.filmId } })
+   
    return {
       title: `${getFilmResponse.data.film.name} - ШИФТ CINEMA`
    }

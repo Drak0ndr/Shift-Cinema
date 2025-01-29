@@ -1,4 +1,6 @@
 import { instance } from '../instance'
 
-export const postPayment = (data: PostPaymentRequest) =>
-   instance.post<PostPaymentResponse>('/cinema/payment', data)
+type postPaymentRequestConfig = RequestConfig<PostPaymentRequest>
+
+export const postPayment = ({ params, config }: postPaymentRequestConfig) =>
+   instance.post<PostPaymentResponse>('/cinema/payment', params, config)

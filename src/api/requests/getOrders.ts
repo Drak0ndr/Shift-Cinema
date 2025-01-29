@@ -1,8 +1,15 @@
 import { instance } from '../instance'
 
-export const getOrders = (token: string) =>
+export interface GetOrdersProps {
+   token: string
+}
+
+type getOrdersRequestConfig = RequestConfig<GetOrdersProps>
+
+export const getOrders = ({ params, config }: getOrdersRequestConfig) =>
    instance.get<GetOrdersResponse>(`/cinema/orders`, {
       headers: {
-         Authorization: `Bearer ${token}`
-      }
+         Authorization: `Bearer ${params.token}`
+      },
+      ...config
    })

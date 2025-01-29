@@ -1,3 +1,10 @@
 import { instance } from '../instance'
 
-export const getFilm = (id: string) => instance.get<GetFilmResponse>(`/cinema/film/${id}`)
+interface GetFilmProps {
+   id: string
+}
+
+type getFilmRequestConfig = RequestConfig<GetFilmProps>
+
+export const getFilm = ({ params, config }: getFilmRequestConfig) =>
+   instance.get<GetFilmResponse>(`/cinema/film/${params.id}`, config)

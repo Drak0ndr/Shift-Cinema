@@ -43,19 +43,21 @@ const Profile = () => {
 
    const onSubmit = (data: FieldValues) => {
       console.log(data)
-      patchProfile(
-         {
-            profile: {
-               firstname: data.firstname,
-               middlename: data.middlename,
-               lastname: data.lastname,
-               email: data.email,
-               city: data.addres
+      patchProfile({
+         params: {
+            data: {
+               profile: {
+                  firstname: data.firstname,
+                  middlename: data.middlename,
+                  lastname: data.lastname,
+                  email: data.email,
+                  city: data.addres
+               },
+               phone: data.phone
             },
-            phone: data.phone
-         },
-         token as string
-      )
+            token: token as string
+         }
+      })
    }
 
    return (

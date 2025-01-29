@@ -1,19 +1,25 @@
 import { instance } from '../instance'
 
-interface PatchProfileRequest {
-   profile: {
-      firstname: string
-      middlename: string
-      lastname: string
-      email: string
-      city: string
+interface PatchProfileProps {
+   data: {
+      profile: {
+         firstname: string
+         middlename: string
+         lastname: string
+         email: string
+         city: string
+      }
+      phone: string
    }
-   phone: string
+   token: string
 }
 
-export const patchProfile = (data: PatchProfileRequest, token: string) =>
-   instance.patch<PatchProfileResponce>('/users/profile', data, {
+type patchProfileRequestConfig = RequestConfig<PatchProfileProps>
+
+export const patchProfile = ({params, config} : patchProfileRequestConfig) =>
+   instance.patch<PatchProfileResponce>('/users/profile', params.data, {
       headers: {
-         Authorization: `Bearer ${token}`
-      }
+         Authorization: `Bearer ${params.token}`
+      },
+      ...config
    })

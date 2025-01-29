@@ -12,8 +12,8 @@ import { ScheduleTabs } from './(components)/ScheduleTabs/ScheduleTabs'
 import styles from './page.module.css'
 
 const Film = async ({ params }: { params: { filmId: string } }) => {
-   const getFilmResponse = await getFilm(params.filmId)
-   const getFilmScheduleResponse = await getFilmSchedule(params.filmId)
+   const getFilmResponse = await getFilm({ params: { id: params.filmId } })
+   const getFilmScheduleResponse = await getFilmSchedule({ params: { id: params.filmId } })
 
    return (
       <>

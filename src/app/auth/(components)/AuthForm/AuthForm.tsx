@@ -31,7 +31,7 @@ export const AuthForm = () => {
    } = useForm()
 
    const requestsOtp = async (phone: string) => {
-      const postOtpResponse = await postOtp(phone)
+      const postOtpResponse = await postOtp({ params: { phone } })
       setRetryDelay(postOtpResponse.data.retryDelay)
       timer.start()
    }
@@ -42,7 +42,9 @@ export const AuthForm = () => {
          setStage(2)
       } else {
          try {
-            const postSigninRespose = await postSignin(data.phone.replaceAll(' ', ''), data.code)
+            const postSigninRespose = await postSignin({
+               params: { phone: data.phone.replaceAll(' ', ''), code: data.code }
+            })
             document.cookie = `authToken=${postSigninRespose.data.token}`
             login(postSigninRespose.data.token)
             router.replace('/')

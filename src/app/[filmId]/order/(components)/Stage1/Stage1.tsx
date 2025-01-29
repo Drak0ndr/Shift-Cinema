@@ -17,7 +17,7 @@ export const Stage1 = () => {
    const { details, setTickets, stage, setStage } = useOrder()
    const [selectedPlace, setSelectedPlace] = useState<{ [key: number]: number[] }>()
 
-   const getFilmScheduleResponse = useGetFilmScheduleQuery(details.filmId)
+   const getFilmScheduleResponse = useGetFilmScheduleQuery({ id: details.filmId })
 
    useEffect(() => {
       if (getFilmScheduleResponse.data) {

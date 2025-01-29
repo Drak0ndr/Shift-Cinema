@@ -19,7 +19,7 @@ import styles from './OrdersTabs.module.css'
 export const OrdersTabs = () => {
    const [tabValue, setTabValue] = useState('active')
    const { token } = useAuth()
-   const getOrdersResponse = useGetOrdersQuery(token as string)
+   const getOrdersResponse = useGetOrdersQuery({ token: token as string })
 
    return (
       <Flex direction="column" gap={24}>
@@ -83,7 +83,12 @@ export const OrdersTabs = () => {
                                        cancelText: 'Вернуть',
                                        confirmText: 'Отменить',
                                        confirmOnClick: () => {
-                                          putCancelOrder(item.orderNumber.toString(), token as string)
+                                          putCancelOrder({
+                                             params: {
+                                                orderId: item.orderNumber.toString(),
+                                                token: token as string
+                                             }
+                                          })
                                              .then(() => getOrdersResponse.refetch())
                                              .catch((data) => console.log(data))
                                        }

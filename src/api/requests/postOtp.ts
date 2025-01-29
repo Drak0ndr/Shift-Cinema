@@ -1,3 +1,10 @@
 import { instance } from '../instance'
 
-export const postOtp = (phone: string) => instance.post<PostOtpRespose>('/auth/otp', { phone })
+interface PostOtpProps {
+   phone: string
+}
+
+type postOtpRequestConfig = RequestConfig<PostOtpProps>
+
+export const postOtp = ({ params, config }: postOtpRequestConfig) =>
+   instance.post<PostOtpRespose>('/auth/otp', { phone: params.phone }, config)

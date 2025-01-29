@@ -20,10 +20,12 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
    }
 
    useEffect(() => {
-      const localToken =
-         document.cookie.replace(/(?:(?:^|.*;\s*)authToken\s*\=\s*([^;]*).*$)|^.*$/, '$1') 
+      const localToken = document.cookie.replace(
+         /(?:(?:^|.*;\s*)authToken\s*\=\s*([^;]*).*$)|^.*$/,
+         '$1'
+      )
       if (localToken) {
-         getSession(localToken)
+         getSession({ params: { token: localToken } })
             .then((data) => {
                console.log(localToken, data)
                setUser(data.data.user)

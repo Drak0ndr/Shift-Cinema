@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 }
 
 const Home = async () => {
-   const getTodayResponse = await getToday()
+   const getTodayResponse = await getToday({})
 
    return (
       <Box mt={48}>

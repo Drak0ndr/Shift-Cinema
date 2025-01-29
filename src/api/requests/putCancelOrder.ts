@@ -1,12 +1,20 @@
 import { instance } from '../instance'
 
-export const putCancelOrder = (orderId: string, token: string) =>
+interface PutCancelOrderProps {
+   orderId: string
+   token: string
+}
+
+type putCancelOrderRequestConfig = RequestConfig<PutCancelOrderProps>
+
+export const putCancelOrder = ({params, config}:putCancelOrderRequestConfig) =>
    instance.put<StandartResponse>(
       `/cinema/orders/cancel`,
-      { orderId },
+      { orderId: params.orderId },
       {
          headers: {
-            Authorization: `Bearer ${token}`
-         }
+            Authorization: `Bearer ${params.token}`
+         },
+         ...config
       }
    )

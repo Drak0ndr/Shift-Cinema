@@ -2,9 +2,13 @@ import { useQuery } from '@tanstack/react-query'
 
 import { postPayment } from '../requests/postPayment'
 
-export const usePostPaymentQuery = (data: PostPaymentRequest) =>
+export const usePostPaymentQuery = (
+   params: PostPaymentRequest,
+   settings?: QuerySettings<typeof postPayment>
+) =>
    useQuery({
       queryKey: ['postPayment'],
-      queryFn: () => postPayment(data),
-      refetchOnWindowFocus: false
+      queryFn: () => postPayment({ params, config: settings?.config }),
+      refetchOnWindowFocus: false,
+      ...settings?.options
    })
