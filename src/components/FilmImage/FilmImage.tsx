@@ -11,7 +11,7 @@ interface Props {
 
 export const FilmImage = ({ img, genre, country, releaseDate, ...props }: Props & BoxProps) => (
    <Box pos="relative" {...props}>
-      <Image src={img} className={styles.img} />
+      <Image src={img} alt="Лого фильма" loading="lazy" className={styles.img} />
       <Flex direction="column" className={styles.film_info}>
          <Text size="sm" ta="center" fw={500}>
             {genre}

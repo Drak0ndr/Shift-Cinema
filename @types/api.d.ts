@@ -1,3 +1,8 @@
+interface StandartResponse {
+   success: boolean
+   reason: string
+}
+
 interface GetTodayResponse {
    success: boolean
    reason: string
@@ -95,6 +100,12 @@ interface GetSessionResponse {
    user: User
 }
 
+interface GetOrdersResponse {
+   success: boolean
+   reason: string
+   orders: Order[]
+}
+
 interface PatchProfileResponce {
    success: true
    reason: 'string'
@@ -149,6 +160,29 @@ interface Seance {
       name: string
       places: Place[][]
    }
+}
+
+interface Order {
+   filmName: string
+   orderNumber: number
+   tickets: {
+      filmId: string
+      row: number
+      column: number
+      seance: {
+         date: string
+         time: string
+      }
+      phone: string
+      status: string
+   }[]
+   person: {
+      firstname: string
+      lastname: string
+      middlename: string
+      phone: string
+   }
+   status: 'PAYED' | 'CANCELED'
 }
 
 interface Place {
