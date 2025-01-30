@@ -1,6 +1,6 @@
 import { instance } from '../instance'
 
-interface PatchProfileProps {
+interface PatchProfileParams {
    data: {
       profile: {
          firstname: string
@@ -14,7 +14,7 @@ interface PatchProfileProps {
    token: string
 }
 
-type patchProfileRequestConfig = RequestConfig<PatchProfileProps>
+type patchProfileRequestConfig = RequestConfig<PatchProfileParams>
 
 export const patchProfile = ({params, config} : patchProfileRequestConfig) =>
    instance.patch<PatchProfileResponce>('/users/profile', params.data, {

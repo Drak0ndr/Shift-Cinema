@@ -13,11 +13,11 @@ import { getDate } from '@/utils/getDate'
 
 import styles from './ScheduleTabs.module.css'
 
-interface Props {
+interface ScheduleTabsProps extends BoxProps {
    data: GetFilmScheduleResponse['schedules']
    filmId: string
 }
-export const ScheduleTabs = ({ data, filmId, ...props }: Props & BoxProps) => {
+export const ScheduleTabs = ({ data, filmId, ...props }: ScheduleTabsProps) => {
    const [tabValue, setTabValue] = useState(data[0].date)
    const [activeBtn, setActiveBtn] = useState({ hall: '', time: '' })
    const { details, setSeance } = useOrder()

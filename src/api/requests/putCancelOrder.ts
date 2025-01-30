@@ -1,11 +1,11 @@
 import { instance } from '../instance'
 
-interface PutCancelOrderProps {
+interface PutCancelOrderParams {
    orderId: string
    token: string
 }
 
-type putCancelOrderRequestConfig = RequestConfig<PutCancelOrderProps>
+type putCancelOrderRequestConfig = RequestConfig<PutCancelOrderParams>
 
 export const putCancelOrder = ({params, config}:putCancelOrderRequestConfig) =>
    instance.put<StandartResponse>(

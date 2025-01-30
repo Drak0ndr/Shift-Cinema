@@ -1,10 +1,10 @@
 import { instance } from '../instance'
 
-interface GetSessionProps {
+interface GetSessionParams {
    token: string
 }
 
-type getSessionRequestConfig = RequestConfig<GetSessionProps>
+type getSessionRequestConfig = RequestConfig<GetSessionParams>
 
 export const getSession = ({ params, config }: getSessionRequestConfig) =>
    instance.get<GetSessionResponse>(`/users/session`, {

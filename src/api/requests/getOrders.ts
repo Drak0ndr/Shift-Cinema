@@ -1,10 +1,10 @@
 import { instance } from '../instance'
 
-export interface GetOrdersProps {
+export interface GetOrdersParams {
    token: string
 }
 
-type getOrdersRequestConfig = RequestConfig<GetOrdersProps>
+type getOrdersRequestConfig = RequestConfig<GetOrdersParams>
 
 export const getOrders = ({ params, config }: getOrdersRequestConfig) =>
    instance.get<GetOrdersResponse>(`/cinema/orders`, {

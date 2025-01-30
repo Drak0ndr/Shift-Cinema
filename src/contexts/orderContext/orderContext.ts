@@ -1,8 +1,10 @@
 import { createContext } from 'react'
 
+import { PostPaymentParams } from '@/api/requests/postPayment'
+
 interface OrderContext {
-   details: PostPaymentRequest
-   setDetails: (details: PostPaymentRequest) => void
+   details: PostPaymentParams
+   setDetails: (details: PostPaymentParams) => void
    setSeance: (date: string, time: string) => void
    setTickets: (matrix: { [key: number]: number[] }) => void
    stage: number

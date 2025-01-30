@@ -1,10 +1,10 @@
 import { instance } from '../instance'
 
-export interface GetFilmScheduleProps {
+export interface GetFilmScheduleParams {
    id: string
 }
 
-type getFilmScheduleRequestConfig = RequestConfig<GetFilmScheduleProps>
+type getFilmScheduleRequestConfig = RequestConfig<GetFilmScheduleParams>
 
 export const getFilmSchedule = ({ params, config }: getFilmScheduleRequestConfig) =>
    instance.get<GetFilmScheduleResponse>(`/cinema/film/${params.id}/schedule`, config)

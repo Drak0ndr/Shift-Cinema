@@ -28,86 +28,32 @@ interface StandartResponse {
    reason: string
 }
 
-interface GetTodayResponse {
-   success: boolean
-   reason: string
+interface GetTodayResponse extends StandartResponse {
    films: Film[]
 }
 
-interface GetFilmResponse {
-   success: boolean
-   reason: string
+interface GetFilmResponse extends StandartResponse {
    film: Film
 }
 
-interface GetFilmScheduleResponse {
-   success: boolean
-   reason: string
+interface GetFilmScheduleResponse extends StandartResponse  {
    schedules: {
       date: string
       seances: Seance[]
    }[]
 }
 
-interface PostPaymentResponse {
-   success: boolean
-   reason: string
-   order: {
-      filmName: string
-      orderNumber: number
-      tickets: {
-         filmId: string
-         row: number
-         column: number
-         seance: {
-            date: string
-            time: string
-         }
-         phone: string
-         status: string
-      }[]
-      person: {
-         firstname: string
-         lastname: string
-         middlename: string
-         phone: string
-      }
-      status: string
-   }
+interface PostPaymentResponse extends StandartResponse  {
+   order: Order
 }
 
-interface PostPaymentRequest {
-   filmId: string
-   person: {
-      firstname: string
-      lastname: string
-      middlename: string
-      phone: string
-   }
-   debitCard: {
-      pan: string
-      expireDate: string
-      cvv: string
-   }
-   seance: {
-      date: string
-      time: string
-   }
-   tickets: {
-      row: number
-      column: number
-   }[]
-}
 
-interface PostOtpRespose {
-   success: boolean
-   reason: string
+
+interface PostOtpRespose extends StandartResponse  {
    retryDelay: number
 }
 
-interface PostSigninRespose {
-   success: boolean
-   reason: string
+interface PostSigninRespose extends StandartResponse  {
    user: {
       phone: string
       firstname: string
@@ -119,21 +65,15 @@ interface PostSigninRespose {
    token: string
 }
 
-interface GetSessionResponse {
-   success: boolean
-   reason: string
+interface GetSessionResponse extends StandartResponse  {
    user: User
 }
 
-interface GetOrdersResponse {
-   success: boolean
-   reason: string
+interface GetOrdersResponse extends StandartResponse  {
    orders: Order[]
 }
 
-interface PatchProfileResponce {
-   success: true
-   reason: 'string'
+interface PatchProfileResponce extends StandartResponse  {
    user: User
 }
 

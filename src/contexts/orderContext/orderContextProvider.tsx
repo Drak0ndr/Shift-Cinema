@@ -1,9 +1,11 @@
 import { ReactNode, useRef, useState } from 'react'
 
+import { PostPaymentParams } from '@/api/requests/postPayment'
+
 import { orderContext } from './orderContext'
 
 export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
-   const details = useRef<PostPaymentRequest>({
+   const details = useRef<PostPaymentParams>({
       filmId: '',
       person: { firstname: '', lastname: '', middlename: '', phone: '' },
       debitCard: { pan: '', expireDate: '', cvv: '' },
@@ -13,7 +15,7 @@ export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
 
    const [stage, setStage] = useState(1)
 
-   const setDetails = (obj: PostPaymentRequest) => {
+   const setDetails = (obj: PostPaymentParams) => {
       details.filmId = obj.filmId
       details.person = obj.person
       details.debitCard = obj.debitCard

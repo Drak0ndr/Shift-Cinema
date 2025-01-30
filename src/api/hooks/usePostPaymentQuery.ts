@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { postPayment } from '../requests/postPayment'
+import { postPayment, PostPaymentParams } from '../requests/postPayment'
 
 export const usePostPaymentQuery = (
-   params: PostPaymentRequest,
+   params: PostPaymentParams,
    settings?: QuerySettings<typeof postPayment>
 ) =>
    useQuery({

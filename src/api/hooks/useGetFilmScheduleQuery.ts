@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 
-import type { GetFilmScheduleProps } from '../requests/getFilmSchedule'
+import type { GetFilmScheduleParams } from '../requests/getFilmSchedule'
 import { getFilmSchedule } from '../requests/getFilmSchedule'
 
 export const useGetFilmScheduleQuery = (
-   params: GetFilmScheduleProps,
+   params: GetFilmScheduleParams,
    settings?: QuerySettings<typeof getFilmSchedule>
 ) =>
    useQuery({

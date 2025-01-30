@@ -1,4 +1,4 @@
-export const calcOrderPrice = (activePlaces: { [key: number]: number[] }, places: Place[][]) => {
+export const calcOrderPrice = (activePlaces: Record<number, number[]>, places: Place[][]) => {
    let sum = 0
    Object.keys(activePlaces).forEach((row) => {
       activePlaces[+row].forEach((item, index) => {
