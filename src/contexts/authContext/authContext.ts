@@ -9,7 +9,7 @@ interface AuthContext {
    login: (token: string) => void
 }
 
-export const authContext = createContext<AuthContext>({
+export const AuthContext = createContext<AuthContext>({
    user: undefined,
    token: undefined,
    setUser: () => {},

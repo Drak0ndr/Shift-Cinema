@@ -66,7 +66,7 @@ export const Stage2 = () => {
             <Input placeholder="Адрес" {...register('addres')} />
          </Input.Wrapper>
          <Flex mt={24} gap={24} wrap="wrap-reverse">
-            <Button variant="default" miw={170} flex={1}>
+            <Button variant="default" miw={170} flex={1} onClick={() => setStage(stage-1)}>
                Назад
             </Button>
             <Button miw={170} flex={1} type="submit">

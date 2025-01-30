@@ -25,11 +25,11 @@ export const Navigation = () => (
             />
          </Flex>
          <Flex align="center" gap={16} component={Link} href="/profile">
-            <Image src="/User.svg" width={24} height={24} alt="user"></Image>
+            <Image src="/User.svg" width={24} height={24} alt="profile"></Image>
             <Text>Профиль</Text>
          </Flex>
          <Flex align="center" gap={16} component={Link} href="/orders">
-            <Image src="/Ticket.svg" width={24} height={24} alt="user"></Image>
+            <Image src="/Ticket.svg" width={24} height={24} alt="orders"></Image>
             <Text>Билеты</Text>
          </Flex>
       </Flex>

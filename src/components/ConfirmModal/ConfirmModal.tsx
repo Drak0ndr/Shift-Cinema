@@ -4,9 +4,9 @@ import type { ContextModalProps } from '@mantine/modals'
 interface ConfirmModalProps {
    title: string
    cancelText: string
-   cancelOnClick: () => void
+   onCancelClick: () => void
    confirmText: string
-   confirmOnClick: () => void
+   onConfirmClick: () => void
 }
 
 export const ConfirmModal = ({ context, id, innerProps }: ContextModalProps<ConfirmModalProps>) => (
@@ -20,7 +20,7 @@ export const ConfirmModal = ({ context, id, innerProps }: ContextModalProps<Conf
          mt={40}
          w="100%"
          onClick={() => {
-            if (innerProps.cancelOnClick) innerProps.cancelOnClick()
+            if (innerProps.onCancelClick) innerProps.onCancelClick()
             context.closeModal(id)
          }}
       >
@@ -30,7 +30,7 @@ export const ConfirmModal = ({ context, id, innerProps }: ContextModalProps<Conf
          mt={16}
          w="100%"
          onClick={() => {
-            if (innerProps.confirmOnClick) innerProps.confirmOnClick()
+            if (innerProps.onConfirmClick) innerProps.onConfirmClick()
             context.closeModal(id)
          }}
       >

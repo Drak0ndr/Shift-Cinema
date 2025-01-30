@@ -80,7 +80,7 @@ export const OrdersTabs = () => {
                                        title: 'Вернуть билет?',
                                        cancelText: 'Вернуть',
                                        confirmText: 'Отменить',
-                                       confirmOnClick: () => {
+                                       onConfirmClick: () => {
                                           putCancelOrder({
                                              params: {
                                                 orderId: item.orderNumber.toString()

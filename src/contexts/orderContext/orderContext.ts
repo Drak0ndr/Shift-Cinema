@@ -11,7 +11,7 @@ interface OrderContext {
    setStage: (stage: number) => void
 }
 
-export const orderContext = createContext<OrderContext>({
+export const OrderContext = createContext<OrderContext>({
    details: {
       filmId: '',
       person: { firstname: '', lastname: '', middlename: '', phone: '' },

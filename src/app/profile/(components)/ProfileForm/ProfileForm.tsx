@@ -113,7 +113,7 @@ export const ProfileForm = () => {
                         title: 'Вы точно хотите выйти?',
                         cancelText: 'Отменить',
                         confirmText: 'Выйти',
-                        confirmOnClick: logout
+                        onConfirmClick: logout
                      }
                   })
                }

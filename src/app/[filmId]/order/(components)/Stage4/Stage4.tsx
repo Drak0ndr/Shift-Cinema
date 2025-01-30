@@ -59,7 +59,7 @@ export const Stage4 = () => {
                variant="default"
                miw={172}
                component={Link}
-               href="/tickets"
+               href="/orders"
             >
                Детали заказа
             </Button>

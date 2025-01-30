@@ -3,7 +3,7 @@ import { ReactNode, useEffect, useState } from 'react'
 import { getSession } from '@/api/requests/getSession'
 import { getCookie } from '@/helpers/getCookie'
 
-import { authContext } from './authContext'
+import { AuthContext } from './authContext'
 
 export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
    const [user, setUser] = useState<User>()
@@ -16,9 +16,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
       console.log('logout')
    }
 
-   const login = (token: string) => {
-      setToken(token)
-   }
+   const login = (token: string) => setToken(token)
+
 
    useEffect(() => {
       const localToken = getCookie('authToken')
@@ -35,8 +34,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
    }, [token])
 
    return (
-      <authContext.Provider value={{ user, token, setUser, setToken, logout, login }}>
+      <AuthContext.Provider value={{ user, token, setUser, setToken, logout, login }}>
          {children}
-      </authContext.Provider>
+      </AuthContext.Provider>
    )
 }

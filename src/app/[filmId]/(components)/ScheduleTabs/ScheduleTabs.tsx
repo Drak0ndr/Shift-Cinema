@@ -67,7 +67,7 @@ export const ScheduleTabs = ({ data, filmId, ...props }: ScheduleTabsProps) => {
                                  className={`${styles.btn} ${activeBtn.hall == hall && activeBtn.time == time ? styles.active : ''}`}
                                  onClick={() =>
                                     activeBtn.hall == hall && activeBtn.time == time
-                                       ? setActiveBtn({ hall: '0', time: '0' })
+                                       ? setActiveBtn({ hall: '', time: '' })
                                        : setActiveBtn({ hall: hall, time: time })
                                  }
                               >

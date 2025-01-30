@@ -12,11 +12,14 @@ import { getHall } from '@/utils/getHall'
 import { getPlaces } from '@/utils/getPlaces'
 
 import styles from './Stage1.module.css'
+import { useParams } from 'next/navigation'
+import Link from 'next/link'
 
 export const Stage1 = () => {
    const { details, setTickets, stage, setStage } = useOrder()
    const [selectedPlace, setSelectedPlace] = useState<{ [key: number]: number[] }>()
-
+   const params = useParams()
+ 
    const getFilmScheduleResponse = useGetFilmScheduleQuery({ id: details.filmId })
 
    useEffect(() => {
@@ -151,7 +154,7 @@ export const Stage1 = () => {
             </Title>
          </Flex>
          <Flex mt={24} gap={24} wrap="wrap-reverse">
-            <Button variant="default" p="16px 57px">
+            <Button variant="default" p="16px 57px" component={Link} href={`/${params.filmId}`}>
                Назад
             </Button>
             <Button

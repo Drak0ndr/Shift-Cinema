@@ -68,7 +68,7 @@ export const Stage3 = () => {
             </Flex>
          </Card>
          <Flex mt={24} gap={24}>
-            <Button variant="default" flex={1} >
+            <Button variant="default" flex={1} onClick={() => setStage(stage-1)}>
                Назад
             </Button>
             <Button flex={1} type="submit">

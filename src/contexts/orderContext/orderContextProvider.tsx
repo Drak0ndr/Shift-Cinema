@@ -4,7 +4,7 @@ import { ReactNode, useRef, useState } from 'react'
 
 import { PostPaymentParams } from '@/api/requests/postPayment'
 
-import { orderContext } from './orderContext'
+import { OrderContext } from './orderContext'
 
 export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
    const details = useRef<PostPaymentParams>({
@@ -41,8 +41,8 @@ export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
    }
 
    return (
-      <orderContext.Provider value={{ details, setDetails, setSeance, setTickets, stage, setStage }}>
+      <OrderContext.Provider value={{ details, setDetails, setSeance, setTickets, stage, setStage }}>
          {children}
-      </orderContext.Provider>
+      </OrderContext.Provider>
    )
 }
