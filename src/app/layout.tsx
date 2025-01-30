@@ -1,26 +1,24 @@
-'use client'
-
 import '@mantine/core/styles.css'
 import './globals.css'
 
 import { Box, ColorSchemeScript, MantineProvider } from '@mantine/core'
-import { useMediaQuery } from '@mantine/hooks'
 import { ModalsProvider } from '@mantine/modals'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
+import { getSession } from '@/api/requests/getSession'
 import { BottomNav } from '@/components/BottomNav/BottomNav'
 import { ConfirmModal } from '@/components/ConfirmModal/ConfirmModal'
 import { Navigation } from '@/components/Navigation/Navigation'
 import { inter } from '@/constants/fonts'
 import { theme } from '@/constants/theme'
 import { AuthContextProvider } from '@/contexts/authContext/authContextProvider'
+import { QueryProvider } from '@/contexts/query/QueryProvide'
 
-export default function RootLayout({
+export default async function RootLayout({
    children
 }: Readonly<{
    children: React.ReactNode
 }>) {
-   const isMobile = useMediaQuery('(width <= 500px)')
+   const getSessionResponce = await getSession({ config: { validateStatus: (status) => status < 600 } })
 
    return (
       <html lang="ru">
@@ -29,17 +27,17 @@ export default function RootLayout({
          </head>
          <body className={inter.className}>
             <MantineProvider theme={theme} defaultColorScheme="light">
-               <QueryClientProvider client={new QueryClient()}>
-                  <AuthContextProvider>
+               <QueryProvider>
+                  <AuthContextProvider defaultUser={getSessionResponce.data.user}>
                      <ModalsProvider modals={{ customConfirmModal: ConfirmModal }}>
-                        {!isMobile && <Navigation />}
-                        <Box component="main" className="container" mb={isMobile ? 65 : 10}>
+                        <Navigation />
+                        <Box component="main" className="container">
                            {children}
                         </Box>
-                        {isMobile && <BottomNav />}
+                        <BottomNav />
                      </ModalsProvider>
                   </AuthContextProvider>
-               </QueryClientProvider>
+               </QueryProvider>
             </MantineProvider>
          </body>
       </html>

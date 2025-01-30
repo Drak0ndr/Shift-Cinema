@@ -1,8 +1,9 @@
 import { Flex, Title } from '@mantine/core'
 import { Metadata } from 'next'
 import { cookies } from 'next/headers'
-import { ProfileForm } from './(components)/ProfileForm/ProfileForm'
 import { redirect } from 'next/navigation'
+
+import { ProfileForm } from './(components)/ProfileForm/ProfileForm'
 
 export const metadata: Metadata = {
    title: 'Профиль - ШИФТ CINEMA'

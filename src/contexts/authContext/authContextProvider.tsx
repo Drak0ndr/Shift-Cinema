@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode, useEffect, useState } from 'react'
 
 import { getSession } from '@/api/requests/getSession'
@@ -5,10 +7,18 @@ import { getCookie } from '@/helpers/getCookie'
 
 import { AuthContext } from './authContext'
 
-export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
-   const [user, setUser] = useState<User>()
-   const [token, setToken] = useState<string>()
-
+export const AuthContextProvider = ({
+   defaultUser,
+   defaultToken,
+   children
+}: {
+   defaultUser?: User
+   defaultToken?: string
+   children: ReactNode
+}) => {
+   const [user, setUser] = useState<User | undefined>(defaultUser)
+   const [token, setToken] = useState<string | undefined>(defaultToken)
+   console.log(defaultUser, user)
    const logout = () => {
       setToken(undefined)
       setUser(undefined)
@@ -18,11 +28,10 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
    const login = (token: string) => setToken(token)
 
-
    useEffect(() => {
       const localToken = getCookie('authToken')
 
-      if (localToken) {
+      if (localToken != token) {
          getSession({})
             .then((data) => {
                console.log(localToken, data)

@@ -4,7 +4,7 @@ import { ReactNode, useRef, useState } from 'react'
 
 import { PostPaymentParams } from '@/api/requests/postPayment'
 
-import { OrderContext } from './orderContext'
+import { OrderContext } from './OrderContext'
 
 export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
    const details = useRef<PostPaymentParams>({

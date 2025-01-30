@@ -1,4 +1,6 @@
 import { Box, Button, Flex, Text, Title, Tooltip } from '@mantine/core'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import { useGetFilmScheduleQuery } from '@/api/hooks/useGetFilmScheduleQuery'
@@ -12,8 +14,6 @@ import { getHall } from '@/utils/getHall'
 import { getPlaces } from '@/utils/getPlaces'
 
 import styles from './Stage1.module.css'
-import { useParams } from 'next/navigation'
-import Link from 'next/link'
 
 export const Stage1 = () => {
    const { details, setTickets, stage, setStage } = useOrder()

@@ -1,7 +1,7 @@
 import { Flex, Image, Text } from '@mantine/core'
+import Link from 'next/link'
 
 import styles from './BottomNav.module.css'
-import Link from 'next/link'
 
 export const BottomNav = () => (
    <Flex className={styles.bottom_nav}>

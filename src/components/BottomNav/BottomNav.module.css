@@ -5,4 +5,5 @@
     background-color: white;
     z-index: 10;
     border-top: 1px solid #CED2DA;
+    display: var(--bottom-nav-display);
 }

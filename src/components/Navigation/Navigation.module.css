@@ -1,6 +1,7 @@
 .nav {
     border-bottom: 1px solid #CED2DA;
     padding: 22px 0;
+    display: var(--nav-display);
 }
 
 .container {

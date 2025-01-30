@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, Flex, Image, Title } from '@mantine/core'
 import type { ContextModalProps } from '@mantine/modals'
 

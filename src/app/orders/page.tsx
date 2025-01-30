@@ -1,9 +1,9 @@
 import { Flex, Title } from '@mantine/core'
-
-import { OrdersTabs } from './(components)/OrdersTabs/OrdersTabs'
+import { Metadata } from 'next'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { Metadata } from 'next'
+
+import { OrdersTabs } from './(components)/OrdersTabs/OrdersTabs'
 
 export const metadata: Metadata = {
    title: 'Билеты - ШИФТ CINEMA'

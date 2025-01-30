@@ -36,14 +36,7 @@ export const ProfileForm = () => {
    })
 
    useEffect(() => {
-      reset({
-         lastname: user?.lastname,
-         firstname: user?.firstname,
-         middlename: user?.middlename,
-         phone: user?.phone,
-         email: user?.email,
-         addres: user?.city
-      })
+      reset()
    }, [user])
 
    const onSubmit = (data: FieldValues) => {
