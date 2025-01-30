@@ -4,7 +4,7 @@ import { Button, Flex, Input } from '@mantine/core'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
 
-import { useOrder } from '@/contexts/orderContext/useOrder'
+import { useOrder } from '@/contexts/order/useOrder'
 
 export const Stage2 = () => {
    const { details, stage, setStage } = useOrder()
@@ -66,7 +66,7 @@ export const Stage2 = () => {
             <Input placeholder="Адрес" {...register('addres')} />
          </Input.Wrapper>
          <Flex mt={24} gap={24} wrap="wrap-reverse">
-            <Button variant="default" miw={170} flex={1} onClick={() => setStage(stage-1)}>
+            <Button variant="default" miw={170} flex={1} onClick={() => setStage(stage - 1)}>
                Назад
             </Button>
             <Button miw={170} flex={1} type="submit">

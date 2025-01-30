@@ -5,7 +5,7 @@ import { ReactNode, useEffect, useState } from 'react'
 import { getSession } from '@/api/requests/getSession'
 import { getCookie } from '@/helpers/getCookie'
 
-import { AuthContext } from './authContext'
+import { AuthContext } from './AuthContext'
 
 export const AuthContextProvider = ({
    defaultUser,

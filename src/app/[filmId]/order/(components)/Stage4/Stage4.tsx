@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import { usePostPaymentQuery } from '@/api/hooks/usePostPaymentQuery'
 import { MONTHS } from '@/constants/months'
-import { useOrder } from '@/contexts/orderContext/useOrder'
+import { useOrder } from '@/contexts/order/useOrder'
 import { getDate } from '@/utils/getDate'
 import { getOrderPlaces } from '@/utils/getOrderPlaces'
 
@@ -55,12 +55,7 @@ export const Stage4 = () => {
             </Text>
          </Card>
          <Flex mt={24} gap={24}>
-            <Button
-               variant="default"
-               miw={172}
-               component={Link}
-               href="/orders"
-            >
+            <Button variant="default" miw={172} component={Link} href="/orders">
                Детали заказа
             </Button>
             <Button miw={172} component={Link} href="/">

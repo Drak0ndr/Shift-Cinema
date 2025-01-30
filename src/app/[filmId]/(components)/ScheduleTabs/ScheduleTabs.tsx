@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import { HALLS } from '@/constants/halls'
 import { MONTHS } from '@/constants/months'
 import { WEEK_DAYS } from '@/constants/weekDays'
-import { useOrder } from '@/contexts/orderContext/useOrder'
+import { useOrder } from '@/contexts/order/useOrder'
 import { formatSeances } from '@/utils/formatSeances'
 import { getDate } from '@/utils/getDate'
 

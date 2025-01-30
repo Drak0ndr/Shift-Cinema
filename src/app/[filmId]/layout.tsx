@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import { getFilm } from '@/api/requests/getFilm'
-import { OrderContextProvider } from '@/contexts/orderContext/OrderContextProvider'
+import { OrderContextProvider } from '@/contexts/order/OrderContextProvider'
 
 export async function generateMetadata({ params }: { params: { filmId: string } }) {
    const getFilmResponse = await getFilm({ params: { id: params.filmId } })

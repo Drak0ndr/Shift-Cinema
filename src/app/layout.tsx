@@ -10,8 +10,8 @@ import { ConfirmModal } from '@/components/ConfirmModal/ConfirmModal'
 import { Navigation } from '@/components/Navigation/Navigation'
 import { inter } from '@/constants/fonts'
 import { theme } from '@/constants/theme'
-import { AuthContextProvider } from '@/contexts/authContext/authContextProvider'
-import { QueryProvider } from '@/contexts/query/QueryProvide'
+import { AuthContextProvider } from '@/contexts/auth/AuthContextProvider'
+import { QueryProvider } from '@/contexts/query/QueryProvider'
 
 export default async function RootLayout({
    children

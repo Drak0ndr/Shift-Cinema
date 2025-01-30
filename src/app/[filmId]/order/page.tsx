@@ -1,7 +1,7 @@
 'use client'
 import { Box, Flex, Image, Progress, Text, Title } from '@mantine/core'
 
-import { useOrder } from '@/contexts/orderContext/useOrder'
+import { useOrder } from '@/contexts/order/useOrder'
 
 import { Stage1 } from './(components)/Stage1/Stage1'
 import { Stage2 } from './(components)/Stage2/Stage2'

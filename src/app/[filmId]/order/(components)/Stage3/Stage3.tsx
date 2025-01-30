@@ -4,7 +4,7 @@ import { Box, Button, Card, Flex, Input } from '@mantine/core'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
 
-import { useOrder } from '@/contexts/orderContext/useOrder'
+import { useOrder } from '@/contexts/order/useOrder'
 
 export const Stage3 = () => {
    const { details, stage, setStage } = useOrder()
@@ -24,7 +24,7 @@ export const Stage3 = () => {
 
    return (
       <Box component="form" maw={368} onSubmit={handleSubmit(onSubmit)}>
-         <Card mt={24} bg="#F3F4F6" component="form" w="100%" >
+         <Card mt={24} bg="#F3F4F6" component="form" w="100%">
             <Input.Wrapper
                label="Номер"
                withAsterisk
@@ -68,7 +68,7 @@ export const Stage3 = () => {
             </Flex>
          </Card>
          <Flex mt={24} gap={24}>
-            <Button variant="default" flex={1} onClick={() => setStage(stage-1)}>
+            <Button variant="default" flex={1} onClick={() => setStage(stage - 1)}>
                Назад
             </Button>
             <Button flex={1} type="submit">

@@ -8,7 +8,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
 
 import { patchProfile } from '@/api/requests/patchProfile'
-import { useAuth } from '@/contexts/authContext/useAuth'
+import { useAuth } from '@/contexts/auth/useAuth'
 
 import styles from './ProfileForm.module.css'
 

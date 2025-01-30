@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { useGetFilmScheduleQuery } from '@/api/hooks/useGetFilmScheduleQuery'
 import { HALLS } from '@/constants/halls'
 import { MONTHS } from '@/constants/months'
-import { useOrder } from '@/contexts/orderContext/useOrder'
+import { useOrder } from '@/contexts/order/useOrder'
 import { calcOrderPrice } from '@/utils/calcOrderPrice'
 import { getActiveRowPlaces } from '@/utils/getActiveRowPlaces'
 import { getDate } from '@/utils/getDate'
@@ -19,7 +19,7 @@ export const Stage1 = () => {
    const { details, setTickets, stage, setStage } = useOrder()
    const [selectedPlace, setSelectedPlace] = useState<{ [key: number]: number[] }>()
    const params = useParams()
- 
+
    const getFilmScheduleResponse = useGetFilmScheduleQuery({ id: details.filmId })
 
    useEffect(() => {

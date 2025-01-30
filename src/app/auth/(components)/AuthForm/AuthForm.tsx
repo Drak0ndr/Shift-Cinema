@@ -9,7 +9,7 @@ import InputMask from 'react-input-mask'
 
 import { postOtp } from '@/api/requests/postOtp'
 import { postSignin } from '@/api/requests/postSignin'
-import { useAuth } from '@/contexts/authContext/useAuth'
+import { useAuth } from '@/contexts/auth/useAuth'
 
 export const AuthForm = () => {
    const { login } = useAuth()
