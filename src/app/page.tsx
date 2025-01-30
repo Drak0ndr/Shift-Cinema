@@ -10,7 +10,7 @@ import { URL } from '@/constants/url'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-   title: 'ШИФТ CINEMA',
+   title: 'ШИФТ CINEMA'
 }
 
 const Home = async () => {
@@ -34,12 +34,7 @@ const Home = async () => {
                         Фильм
                      </Text>
                      <FilmRating rating={Number(item.userRatings.kinopoisk)} />
-                     <Button
-                        w="100%"
-                        mt={16}
-                        component={Link}
-                        href={`/${item.id}`}
-                     >
+                     <Button w="100%" mt={16} component={Link} href={`/${item.id}`}>
                         Подробнее
                      </Button>
                   </Box>

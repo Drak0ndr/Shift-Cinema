@@ -1,8 +1,20 @@
-import {  Flex, Title } from '@mantine/core'
+import { Flex, Title } from '@mantine/core'
 
 import { OrdersTabs } from './(components)/OrdersTabs/OrdersTabs'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+import { Metadata } from 'next'
 
-const Orders = () => {
+export const metadata: Metadata = {
+   title: 'Билеты - ШИФТ CINEMA'
+}
+
+const Orders = async () => {
+   const cookieStore = await cookies()
+   const token = cookieStore.get('authToken')?.value
+
+   if (!token) redirect('/auth')
+
    return (
       <Flex direction="column" gap={24} mt={48}>
          <Title order={2}>Заказы</Title>

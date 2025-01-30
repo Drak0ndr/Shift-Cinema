@@ -9,7 +9,6 @@ import { putCancelOrder } from '@/api/requests/putCancelOrder'
 import { MONTHS } from '@/constants/months'
 import { PAYMENT_STATUSES } from '@/constants/paymentStatuses'
 import { WEEK_DAYS } from '@/constants/weekDays'
-import { useAuth } from '@/contexts/authContext/useAuth'
 import { getDate } from '@/utils/getDate'
 import { getOrderPlaces } from '@/utils/getOrderPlaces'
 import { getOrders } from '@/utils/getOrders'
@@ -18,8 +17,7 @@ import styles from './OrdersTabs.module.css'
 
 export const OrdersTabs = () => {
    const [tabValue, setTabValue] = useState('active')
-   const { token } = useAuth()
-   const getOrdersResponse = useGetOrdersQuery({ token: token as string })
+   const getOrdersResponse = useGetOrdersQuery()
 
    return (
       <Flex direction="column" gap={24}>
@@ -85,8 +83,7 @@ export const OrdersTabs = () => {
                                        confirmOnClick: () => {
                                           putCancelOrder({
                                              params: {
-                                                orderId: item.orderNumber.toString(),
-                                                token: token as string
+                                                orderId: item.orderNumber.toString()
                                              }
                                           })
                                              .then(() => getOrdersResponse.refetch())

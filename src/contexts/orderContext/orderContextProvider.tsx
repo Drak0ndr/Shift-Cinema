@@ -1,3 +1,5 @@
+'use client'
+
 import { ReactNode, useRef, useState } from 'react'
 
 import { PostPaymentParams } from '@/api/requests/postPayment'

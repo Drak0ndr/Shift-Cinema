@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react'
 
 import { getSession } from '@/api/requests/getSession'
+import { getCookie } from '@/helpers/getCookie'
 
 import { authContext } from './authContext'
 
@@ -20,12 +21,10 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
    }
 
    useEffect(() => {
-      const localToken = document.cookie.replace(
-         /(?:(?:^|.*;\s*)authToken\s*\=\s*([^;]*).*$)|^.*$/,
-         '$1'
-      )
+      const localToken = getCookie('authToken')
+
       if (localToken) {
-         getSession({ params: { token: localToken } })
+         getSession({})
             .then((data) => {
                console.log(localToken, data)
                setUser(data.data.user)
