@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+import { COOKIES } from '@/constants/cookies'
 import { URL } from '@/constants/url'
 import { getCookie } from '@/helpers/getCookie'
 import { isSSR } from '@/helpers/isSSR'
@@ -13,9 +14,9 @@ instance.interceptors.request.use(async (config) => {
    if (isSSR) {
       const cookies = (await import('next/headers')).cookies
       const cookieStore = cookies()
-      token = cookieStore.get('authToken')?.value
+      token = cookieStore.get(COOKIES.AUTH)?.value
    } else {
-      token = getCookie('authToken')
+      token = getCookie(COOKIES.AUTH)
    }
 
    config.headers.Authorization = `Bearer ${token}`
