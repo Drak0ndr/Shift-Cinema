@@ -16,25 +16,31 @@ import { getPlaces } from '@/utils/getPlaces'
 import styles from './Stage1.module.css'
 
 export const Stage1 = () => {
-   const { details, setTickets, stage, setStage } = useOrder()
+   const order = useOrder()
    const [selectedPlace, setSelectedPlace] = useState<Record<number, number[]>>()
    const params = useParams()
 
-   const getFilmScheduleResponse = useGetFilmScheduleQuery({ id: details.filmId })
+   const getFilmScheduleResponse = useGetFilmScheduleQuery({ id: order.details.filmId })
+
+   const places =
+      getFilmScheduleResponse.data &&
+      getPlaces(
+         order.details.seance.date,
+         order.details.seance.time,
+         getFilmScheduleResponse.data?.data.schedules
+      )
 
    useEffect(() => {
       if (getFilmScheduleResponse.data) {
-         console.log(getFilmScheduleResponse.data.data)
-         const places = getPlaces(
-            details.seance.date,
-            details.seance.time,
-            getFilmScheduleResponse.data?.data.schedules
-         )
-         const obj: { [key: number]: number[] } = {}
-         places.forEach((item, index) => {
-            obj[index + 1] = Array(item.length).fill(0)
-         })
-         setSelectedPlace(obj)
+         const basePlaes: Record<number, number[]> = {}
+
+         if (places) {
+            places.forEach((item, index) => {
+               basePlaes[index + 1] = Array(item.length).fill(0)
+            })
+         }
+
+         setSelectedPlace(basePlaes)
       }
    }, [getFilmScheduleResponse.isLoading])
 
@@ -55,12 +61,8 @@ export const Stage1 = () => {
             </Box>
             <Text size="xs">Ряд</Text>
             {selectedPlace &&
-               getFilmScheduleResponse.data &&
-               getPlaces(
-                  details.seance.date,
-                  details.seance.time,
-                  getFilmScheduleResponse.data?.data.schedules
-               ).map((row, indexRow) => (
+               places &&
+               places.map((row, indexRow) => (
                   <Flex key={indexRow} gap={24}>
                      <Text size="sm" miw={16}>
                         {indexRow + 1}
@@ -109,8 +111,8 @@ export const Stage1 = () => {
                   {getFilmScheduleResponse.data &&
                      HALLS[
                         getHall(
-                           details.seance.date,
-                           details.seance.time,
+                           order.details.seance.date,
+                           order.details.seance.time,
                            getFilmScheduleResponse.data?.data.schedules
                         )
                      ]}
@@ -120,7 +122,7 @@ export const Stage1 = () => {
                <Text size="xs" c="#637083">
                   Дата и время
                </Text>
-               <Text>{`${getDate(details.seance.date).getDate()} ${MONTHS[getDate(details.seance.date).getMonth()]} ${details.seance.time}`}</Text>
+               <Text>{`${getDate(order.details.seance.date).getDate()} ${MONTHS[getDate(order.details.seance.date).getMonth()]} ${order.details.seance.time}`}</Text>
             </Box>
             <Box>
                <Text size="xs" c="#637083">
@@ -139,18 +141,7 @@ export const Stage1 = () => {
                   })}
             </Box>
             <Title order={3}>
-               Сумма:{' '}
-               {selectedPlace &&
-                  getFilmScheduleResponse.data &&
-                  calcOrderPrice(
-                     selectedPlace,
-                     getPlaces(
-                        details.seance.date,
-                        details.seance.time,
-                        getFilmScheduleResponse.data?.data.schedules
-                     )
-                  )}{' '}
-               ₽
+               Сумма: {selectedPlace && places && calcOrderPrice(selectedPlace, places)} ₽
             </Title>
          </Flex>
          <Flex mt={24} gap={24} maw={368} wrap="wrap-reverse">
@@ -161,8 +152,8 @@ export const Stage1 = () => {
                miw={170}
                flex={1}
                onClick={() => {
-                  setStage(stage + 1)
-                  setTickets(selectedPlace ? selectedPlace : [])
+                  order.setStage(order.stage + 1)
+                  order.setTickets(selectedPlace ? selectedPlace : [])
                }}
             >
                Купить
