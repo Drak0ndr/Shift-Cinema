@@ -1,0 +1,19 @@
+.place {
+    min-width: 16px;
+    height: 16px;
+    background-color: #712D9C;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.blocked {
+    background-color: #CED2DA;
+}
+
+.payed {
+    background-color: #bedcca;
+}
+
+.place.active {
+    transform: scale(2);
+}

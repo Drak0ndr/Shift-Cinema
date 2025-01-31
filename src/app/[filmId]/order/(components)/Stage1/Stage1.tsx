@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text, Title, Tooltip } from '@mantine/core'
+import { Box, Button, Flex, Text, Title } from '@mantine/core'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -13,6 +13,7 @@ import { getDate } from '@/utils/getDate'
 import { getHall } from '@/utils/getHall'
 import { getPlaces } from '@/utils/getPlaces'
 
+import { Matrix } from './components/Matrix/Matrix'
 import styles from './Stage1.module.css'
 
 export const Stage1 = () => {
@@ -44,12 +45,6 @@ export const Stage1 = () => {
       }
    }, [getFilmScheduleResponse.isLoading])
 
-   const togglePlace = (row: number, place: number) => {
-      const matrix = { ...selectedPlace }
-      matrix[row][place] = Number(!selectedPlace![row][place])
-      setSelectedPlace(matrix)
-   }
-
    return (
       <>
          <Flex direction="column" className={styles.matrix_container}>
@@ -59,50 +54,7 @@ export const Stage1 = () => {
                </Text>
                <Box className={styles.screen}></Box>
             </Box>
-            <Text size="xs">Ряд</Text>
-            {selectedPlace &&
-               places &&
-               places.map((row, indexRow) => (
-                  <Flex key={indexRow} gap={24}>
-                     <Text size="sm" miw={16}>
-                        {indexRow + 1}
-                     </Text>
-                     {row.map((item, indexCol) =>
-                        item.type != 'BLOCKED' && item.type != 'PAYED' ? (
-                           <Tooltip
-                              key={indexCol}
-                              bg="white"
-                              label={
-                                 <>
-                                    <Text size="xs" c="#141C24">{`${item.price} ₽`}</Text>
-                                    <Text
-                                       size="xs"
-                                       c="#637083"
-                                    >{`${indexRow + 1} ряд, ${indexCol + 1} место`}</Text>
-                                 </>
-                              }
-                           >
-                              <Flex
-                                 justify="center"
-                                 align="center"
-                                 className={`${styles.place} ${selectedPlace[indexRow + 1][indexCol] ? styles.active : ''}`}
-                                 onClick={() => togglePlace(indexRow + 1, indexCol)}
-                              >
-                                 <Text size="8px" c="white">
-                                    {selectedPlace[indexRow + 1][indexCol] ? indexCol + 1 : ''}
-                                 </Text>
-                              </Flex>
-                           </Tooltip>
-                        ) : (
-                           <Flex
-                              key={indexCol}
-                              className={`${styles.place} ${item.type == 'BLOCKED' ? styles.blocked : styles.payed}`}
-                           ></Flex>
-                        )
-                     )}
-                  </Flex>
-               ))}
-
+            <Matrix value={selectedPlace} places={places} onChange={setSelectedPlace} />
             <Box>
                <Text size="xs" c="#637083">
                   Зал
