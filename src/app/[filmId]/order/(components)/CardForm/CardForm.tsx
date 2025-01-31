@@ -6,7 +6,7 @@ import InputMask from 'react-input-mask'
 
 import { useOrder } from '@/contexts'
 
-export const Stage3 = () => {
+export const CardForm = () => {
    const { details, stage, setStage } = useOrder()
    const {
       register,

@@ -8,9 +8,9 @@ import { MONTHS } from '@/constants'
 import { useOrder } from '@/contexts'
 import { getDate, getOrderPlaces } from '@/utils'
 
-import styles from './Stage4.module.css'
+import styles from './Receipt.module.css'
 
-export const Stage4 = () => {
+export const Receipt = () => {
    const { details } = useOrder()
 
    const postPaymentResponse = usePostPaymentQuery(details)

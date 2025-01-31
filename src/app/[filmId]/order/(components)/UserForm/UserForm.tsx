@@ -6,7 +6,7 @@ import InputMask from 'react-input-mask'
 
 import { useAuth, useOrder  } from '@/contexts'
 
-export const Stage2 = () => {
+export const UserForm = () => {
    const { details, stage, setStage } = useOrder()
    const { user } = useAuth()
 

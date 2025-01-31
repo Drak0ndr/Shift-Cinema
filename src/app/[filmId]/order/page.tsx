@@ -3,10 +3,10 @@ import { Box, Flex, Image, Progress, Text, Title } from '@mantine/core'
 
 import { useOrder } from '@/contexts'
 
-import { Stage1 } from './(components)/Stage1/Stage1'
-import { Stage2 } from './(components)/Stage2/Stage2'
-import { Stage3 } from './(components)/Stage3/Stage3'
-import { Stage4 } from './(components)/Stage4/Stage4'
+import { CardForm } from './(components)/CardForm/CardForm'
+import { Receipt } from './(components)/Receipt/Receipt'
+import { SelectPlace } from './(components)/SelectPlace/SelectPlace'
+import { UserForm } from './(components)/UserForm/UserForm'
 
 const Order = () => {
    const { stage } = useOrder()
@@ -30,10 +30,10 @@ const Order = () => {
             </Box>
          )}
 
-         {stage == 1 && <Stage1 />}
-         {stage == 2 && <Stage2 />}
-         {stage == 3 && <Stage3 />}
-         {stage == 4 && <Stage4 />}
+         {stage == 1 && <SelectPlace />}
+         {stage == 2 && <UserForm />}
+         {stage == 3 && <CardForm />}
+         {stage == 4 && <Receipt />}
       </>
    )
 }

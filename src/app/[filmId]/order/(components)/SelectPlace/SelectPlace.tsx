@@ -11,9 +11,9 @@ import { calcOrderPrice, getActiveRowPlaces, getDate, getHall, getPlaces } from 
 
 import { Matrix } from './components/Matrix/Matrix'
 import { TicketsForm } from './components/TicketsForm/TicketsForm'
-import styles from './Stage1.module.css'
+import styles from './SelectPlace.module.css'
 
-export const Stage1 = () => {
+export const SelectPlace = () => {
    const order = useOrder()
    const [selectedPlace, setSelectedPlace] = useState<Record<number, number[]>>()
    const params = useParams()
