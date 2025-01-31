@@ -54,7 +54,7 @@ export const Stage4 = () => {
                Вся информация была продублирована в SMS
             </Text>
          </Card>
-         <Flex mt={24} gap={24}>
+         <Flex mt={24} gap={24} wrap="wrap-reverse">
             <Button variant="default" miw={172} component={Link} href="/orders">
                Детали заказа
             </Button>

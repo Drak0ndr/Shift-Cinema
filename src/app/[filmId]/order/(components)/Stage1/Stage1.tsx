@@ -14,12 +14,16 @@ import { getHall } from '@/utils/getHall'
 import { getPlaces } from '@/utils/getPlaces'
 
 import { Matrix } from './components/Matrix/Matrix'
+import { TicketsForm } from './components/TicketsForm/TicketsForm'
 import styles from './Stage1.module.css'
+import { useMediaQuery } from '@mantine/hooks'
 
 export const Stage1 = () => {
    const order = useOrder()
    const [selectedPlace, setSelectedPlace] = useState<Record<number, number[]>>()
    const params = useParams()
+
+   const isMobile = useMediaQuery('(width <= 500px)')
 
    const getFilmScheduleResponse = useGetFilmScheduleQuery({ id: order.details.filmId })
 
@@ -48,13 +52,19 @@ export const Stage1 = () => {
    return (
       <>
          <Flex direction="column" className={styles.matrix_container}>
-            <Box pl={40}>
-               <Text size="xs" ta="center">
-                  Экран
-               </Text>
-               <Box className={styles.screen}></Box>
-            </Box>
-            <Matrix value={selectedPlace} places={places} onChange={setSelectedPlace} />
+            {!isMobile && (
+               <Box pl={40}>
+                  <Text size="xs" ta="center">
+                     Экран
+                  </Text>
+                  <Box className={styles.screen}></Box>
+               </Box>
+            )}
+
+            {!isMobile && <Matrix value={selectedPlace} places={places} onChange={setSelectedPlace} />}
+            {isMobile && (
+               <TicketsForm value={selectedPlace} places={places} onChange={setSelectedPlace} />
+            )}
             <Box>
                <Text size="xs" c="#637083">
                   Зал

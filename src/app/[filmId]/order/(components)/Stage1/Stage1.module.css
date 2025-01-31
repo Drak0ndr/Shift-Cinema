@@ -1,9 +1,7 @@
 .matrix_container {
     gap: 24px;
     width: fit-content;
-    max-width: 100%;
     margin-top: 48px;
-    overflow-x: auto;
 }
 
 .screen {
