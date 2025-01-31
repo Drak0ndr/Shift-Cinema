@@ -4,15 +4,25 @@ import { Button, Flex, Input } from '@mantine/core'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
 
-import { useOrder } from '@/contexts/order/useOrder'
+import { useAuth, useOrder  } from '@/contexts'
 
 export const Stage2 = () => {
    const { details, stage, setStage } = useOrder()
+   const { user } = useAuth()
+
    const {
       register,
       handleSubmit,
       formState: { errors }
-   } = useForm()
+   } = useForm({
+      defaultValues: {
+         lastname: user?.lastname,
+         firstname: user?.firstname,
+         phone: user?.phone,
+         email: user?.email,
+         addres: user?.city
+      }
+   })
 
    const onSubmit = (data: FieldValues) => {
       details.person.firstname = data.firstname

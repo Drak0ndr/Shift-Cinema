@@ -4,14 +4,10 @@ import './globals.css'
 import { Box, ColorSchemeScript, MantineProvider } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 
-import { getSession } from '@/api/requests/getSession'
-import { BottomNav } from '@/components/BottomNav/BottomNav'
-import { ConfirmModal } from '@/components/ConfirmModal/ConfirmModal'
-import { Navigation } from '@/components/Navigation/Navigation'
-import { inter } from '@/constants/fonts'
-import { theme } from '@/constants/theme'
-import { AuthContextProvider } from '@/contexts/auth/AuthContextProvider'
-import { QueryProvider } from '@/contexts/query/QueryProvider'
+import { getSession } from '@/api'
+import { BottomNav, ConfirmModal, Navigation } from '@/components'
+import { inter, theme } from '@/constants'
+import { AuthContextProvider, QueryProvider } from '@/contexts'
 
 export default async function RootLayout({
    children

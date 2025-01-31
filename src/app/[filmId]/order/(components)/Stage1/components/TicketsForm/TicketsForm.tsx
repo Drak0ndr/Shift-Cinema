@@ -32,11 +32,11 @@ export const TicketsForm = ({ value, places, onChange }: TicketsFormProps) => {
          })
 
          copyTickets.forEach((item) => {
-            if (item.row && (item.column || item.column == 0)) {
+            if ((item.row || item.row == 0) && (item.column || item.column == 0)) {
                copyTicketsMatrix[item.row + 1][item.column] = 1
             }
          })
-
+         console.log(copyTicketsMatrix, copyTickets)
          onChange(copyTicketsMatrix)
       }
 

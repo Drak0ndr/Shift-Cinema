@@ -4,12 +4,9 @@ import { Box, BoxProps, Button, Flex, SegmentedControl, Text } from '@mantine/co
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-import { HALLS } from '@/constants/halls'
-import { MONTHS } from '@/constants/months'
-import { WEEK_DAYS } from '@/constants/weekDays'
-import { useOrder } from '@/contexts/order/useOrder'
-import { formatSeances } from '@/utils/formatSeances'
-import { getDate } from '@/utils/getDate'
+import { HALLS, MONTHS, WEEK_DAYS } from '@/constants'
+import { useOrder } from '@/contexts'
+import { formatSeances, getDate } from '@/utils'
 
 import styles from './ScheduleTabs.module.css'
 

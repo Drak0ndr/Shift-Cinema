@@ -1,22 +1,17 @@
 import { Box, Button, Flex, Text, Title } from '@mantine/core'
+import { useMediaQuery } from '@mantine/hooks'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-import { useGetFilmScheduleQuery } from '@/api/hooks/useGetFilmScheduleQuery'
-import { HALLS } from '@/constants/halls'
-import { MONTHS } from '@/constants/months'
-import { useOrder } from '@/contexts/order/useOrder'
-import { calcOrderPrice } from '@/utils/calcOrderPrice'
-import { getActiveRowPlaces } from '@/utils/getActiveRowPlaces'
-import { getDate } from '@/utils/getDate'
-import { getHall } from '@/utils/getHall'
-import { getPlaces } from '@/utils/getPlaces'
+import { useGetFilmScheduleQuery } from '@/api'
+import { HALLS, MONTHS } from '@/constants'
+import { useOrder } from '@/contexts'
+import { calcOrderPrice, getActiveRowPlaces, getDate, getHall, getPlaces } from '@/utils'
 
 import { Matrix } from './components/Matrix/Matrix'
 import { TicketsForm } from './components/TicketsForm/TicketsForm'
 import styles from './Stage1.module.css'
-import { useMediaQuery } from '@mantine/hooks'
 
 export const Stage1 = () => {
    const order = useOrder()

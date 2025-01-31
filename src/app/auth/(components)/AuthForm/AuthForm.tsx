@@ -7,9 +7,8 @@ import { useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
 
-import { postOtp } from '@/api/requests/postOtp'
-import { postSignin } from '@/api/requests/postSignin'
-import { useAuth } from '@/contexts/auth/useAuth'
+import { postOtp, postSignin } from '@/api'
+import { useAuth } from '@/contexts'
 
 export const AuthForm = () => {
    const { login } = useAuth()

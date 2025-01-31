@@ -3,11 +3,10 @@
 import { Box, Button, Card, Flex, Text } from '@mantine/core'
 import Link from 'next/link'
 
-import { usePostPaymentQuery } from '@/api/hooks/usePostPaymentQuery'
-import { MONTHS } from '@/constants/months'
-import { useOrder } from '@/contexts/order/useOrder'
-import { getDate } from '@/utils/getDate'
-import { getOrderPlaces } from '@/utils/getOrderPlaces'
+import { usePostPaymentQuery } from '@/api'
+import { MONTHS } from '@/constants'
+import { useOrder } from '@/contexts'
+import { getDate, getOrderPlaces } from '@/utils'
 
 import styles from './Stage4.module.css'
 

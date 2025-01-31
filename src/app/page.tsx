@@ -2,10 +2,9 @@ import { Box, Button, Flex, SimpleGrid, Text, Title } from '@mantine/core'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { getToday } from '@/api/requests/getToday'
-import { FilmImage } from '@/components/FilmImage/FilmImage'
-import { FilmRating } from '@/components/FilmRating/FilmRating'
-import { URL } from '@/constants/url'
+import { getToday } from '@/api'
+import { FilmImage,FilmRating } from '@/components'
+import { URL } from '@/constants'
 
 import styles from './page.module.css'
 

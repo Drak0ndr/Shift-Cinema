@@ -4,14 +4,9 @@ import { Badge, Box, Button, Card, Flex, SegmentedControl, SimpleGrid, Text, Tit
 import { modals } from '@mantine/modals'
 import { useState } from 'react'
 
-import { useGetOrdersQuery } from '@/api/hooks/useGetOrdersQuery'
-import { putCancelOrder } from '@/api/requests/putCancelOrder'
-import { MONTHS } from '@/constants/months'
-import { PAYMENT_STATUSES } from '@/constants/paymentStatuses'
-import { WEEK_DAYS } from '@/constants/weekDays'
-import { getDate } from '@/utils/getDate'
-import { getOrderPlaces } from '@/utils/getOrderPlaces'
-import { getOrders } from '@/utils/getOrders'
+import { putCancelOrder,useGetOrdersQuery  } from '@/api'
+import { MONTHS,PAYMENT_STATUSES,WEEK_DAYS } from '@/constants'
+import { getDate, getOrderPlaces, getOrders } from '@/utils'
 
 import styles from './OrdersTabs.module.css'
 
