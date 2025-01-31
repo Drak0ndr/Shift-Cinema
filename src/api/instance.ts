@@ -12,8 +12,8 @@ instance.interceptors.request.use(async (config) => {
    let token: string | undefined
    if (isSSR) {
       const cookies = (await import('next/headers')).cookies
-      const cookieStore = await cookies()
-      token = await cookieStore.get('authToken')?.value
+      const cookieStore = cookies()
+      token = cookieStore.get('authToken')?.value
    } else {
       token = getCookie('authToken')
    }

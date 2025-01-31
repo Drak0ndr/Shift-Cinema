@@ -17,7 +17,7 @@ import styles from './Stage1.module.css'
 
 export const Stage1 = () => {
    const { details, setTickets, stage, setStage } = useOrder()
-   const [selectedPlace, setSelectedPlace] = useState<{ [key: number]: number[] }>()
+   const [selectedPlace, setSelectedPlace] = useState<Record<number, number[]>>()
    const params = useParams()
 
    const getFilmScheduleResponse = useGetFilmScheduleQuery({ id: details.filmId })
@@ -46,7 +46,7 @@ export const Stage1 = () => {
 
    return (
       <>
-         <Flex direction="column" gap={24} w="fit-content" mt={48}>
+         <Flex direction="column" className={styles.matrix_container}>
             <Box pl={40}>
                <Text size="xs" ta="center">
                   Экран
@@ -153,12 +153,13 @@ export const Stage1 = () => {
                ₽
             </Title>
          </Flex>
-         <Flex mt={24} gap={24} wrap="wrap-reverse">
-            <Button variant="default" p="16px 57px" component={Link} href={`/${params.filmId}`}>
+         <Flex mt={24} gap={24} maw={368} wrap="wrap-reverse">
+            <Button variant="default" miw={170} flex={1} component={Link} href={`/${params.filmId}`}>
                Назад
             </Button>
             <Button
-               p="16px 57px"
+               miw={170}
+               flex={1}
                onClick={() => {
                   setStage(stage + 1)
                   setTickets(selectedPlace ? selectedPlace : [])

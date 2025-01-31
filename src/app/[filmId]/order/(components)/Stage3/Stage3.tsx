@@ -67,11 +67,11 @@ export const Stage3 = () => {
                </Input.Wrapper>
             </Flex>
          </Card>
-         <Flex mt={24} gap={24}>
-            <Button variant="default" flex={1} onClick={() => setStage(stage - 1)}>
+         <Flex mt={24} gap={24} wrap="wrap-reverse">
+            <Button variant="default" miw={160} flex={1} onClick={() => setStage(stage - 1)}>
                Назад
             </Button>
-            <Button flex={1} type="submit">
+            <Button miw={160} flex={1} type="submit">
                Оплатить
             </Button>
          </Flex>

@@ -32,12 +32,11 @@ export const AuthContextProvider = ({
       const localToken = getCookie('authToken')
 
       if (localToken != token) {
-         getSession({})
-            .then((data) => {
-               console.log(localToken, data)
-               setUser(data.data.user)
-            })
-            .catch(() => {})
+         getSession({ config: { validateStatus: (status) => status < 600 } }).then((data) => {
+            console.log(localToken, data)
+            setUser(data.data.user)
+         })
+
          setToken(localToken)
       }
    }, [token])

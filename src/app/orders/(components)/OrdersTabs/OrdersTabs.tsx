@@ -83,7 +83,7 @@ export const OrdersTabs = () => {
                                        onConfirmClick: () => {
                                           putCancelOrder({
                                              params: {
-                                                orderId: item.orderNumber.toString()
+                                                orderId: item._id
                                              }
                                           })
                                              .then(() => getOrdersResponse.refetch())

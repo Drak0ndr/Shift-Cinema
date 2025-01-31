@@ -128,6 +128,7 @@ interface Seance {
 }
 
 interface Order {
+   _id: string
    filmName: string
    orderNumber: number
    tickets: {

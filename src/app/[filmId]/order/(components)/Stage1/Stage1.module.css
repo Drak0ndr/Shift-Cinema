@@ -1,3 +1,11 @@
+.matrix_container {
+    gap: 24px;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 48px;
+    overflow-x: auto;
+}
+
 .screen {
     margin: 0 auto;
     max-width: 410px;
@@ -8,7 +16,7 @@
 }
 
 .place {
-    width: 16px;
+    min-width: 16px;
     height: 16px;
     background-color: #712D9C;
     border-radius: 4px;
