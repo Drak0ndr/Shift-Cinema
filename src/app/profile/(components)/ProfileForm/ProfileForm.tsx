@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 }
 
 export const ProfileForm = () => {
-   const { user, logout } = useAuth()
+   const { user, logout, update } = useAuth()
 
    const {
       register,
@@ -36,7 +36,7 @@ export const ProfileForm = () => {
    })
 
    useEffect(() => {
-      reset()
+      // reset()
    }, [user])
 
    const onSubmit = (data: FieldValues) => {
@@ -52,6 +52,8 @@ export const ProfileForm = () => {
             },
             phone: data.phone
          }
+      }).then(() => {
+         update()
       })
    }
 

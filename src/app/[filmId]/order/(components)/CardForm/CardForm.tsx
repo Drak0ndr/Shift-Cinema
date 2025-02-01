@@ -5,6 +5,7 @@ import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
 
 import { useOrder } from '@/contexts'
+import { VALIDATION_ERRORS } from '@/constants/validationErrors'
 
 export const CardForm = () => {
    const { details, stage, setStage } = useOrder()
@@ -28,7 +29,7 @@ export const CardForm = () => {
             <Input.Wrapper
                label="Номер"
                withAsterisk
-               error={`${errors.pan?.type ? errors.pan?.type : ''}`}
+               error={`${errors.pan?.type ? (VALIDATION_ERRORS[errors.pan?.type as string] ? VALIDATION_ERRORS[errors.pan?.type as string] : errors.pan?.type) : ''}`}
             >
                <Input
                   placeholder="0000 0000"
@@ -42,7 +43,7 @@ export const CardForm = () => {
                <Input.Wrapper
                   label="Срок"
                   withAsterisk
-                  error={`${errors.expireDate?.type ? errors.expireDate?.type : ''}`}
+                  error={`${errors.expireDate?.type ? (VALIDATION_ERRORS[errors.expireDate?.type as string] ? VALIDATION_ERRORS[errors.expireDate?.type as string] : errors.expireDate?.type) : ''}`}
                >
                   <Input
                      placeholder="00/00"
@@ -55,7 +56,7 @@ export const CardForm = () => {
                <Input.Wrapper
                   label="CVV"
                   withAsterisk
-                  error={`${errors.cvv?.type ? errors.cvv?.type : ''}`}
+                  error={`${errors.cvv?.type ? (VALIDATION_ERRORS[errors.cvv?.type as string] ? VALIDATION_ERRORS[errors.cvv?.type as string] : errors.cvv?.type) : ''}`}
                >
                   <Input
                      placeholder="000"

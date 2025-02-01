@@ -9,6 +9,7 @@ interface AuthContext {
    setToken: (token: string) => void
    logout: () => void
    login: (token: string) => void
+   update: () => void
 }
 
 export const AuthContext = createContext<AuthContext>({
@@ -17,5 +18,6 @@ export const AuthContext = createContext<AuthContext>({
    setUser: () => {},
    setToken: () => {},
    logout: () => {},
-   login: () => {}
+   login: () => {},
+   update: () => {}
 })

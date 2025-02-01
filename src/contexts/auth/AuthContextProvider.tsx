@@ -41,6 +41,13 @@ export const AuthContextProvider = ({
       })
    }
 
+   const update = () => {
+      getSession({ config: { validateStatus: (status) => status < 600 } }).then((data) => {
+         setUser(data.data.user)
+         setToken(getCookie('authToken'))
+      })
+   }
+
    useEffect(() => {
       const localToken = getCookie('authToken')
 
@@ -55,7 +62,7 @@ export const AuthContextProvider = ({
    }, [token])
 
    return (
-      <AuthContext.Provider value={{ user, token, setUser, setToken, logout, login }}>
+      <AuthContext.Provider value={{ user, token, setUser, setToken, logout, login, update }}>
          {children}
       </AuthContext.Provider>
    )

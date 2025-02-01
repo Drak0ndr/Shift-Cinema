@@ -4,7 +4,8 @@ import { Button, Flex, Input } from '@mantine/core'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
 
-import { useAuth, useOrder  } from '@/contexts'
+import { useAuth, useOrder } from '@/contexts'
+import { VALIDATION_ERRORS } from '@/constants/validationErrors'
 
 export const UserForm = () => {
    const { details, stage, setStage } = useOrder()
@@ -44,21 +45,21 @@ export const UserForm = () => {
          <Input.Wrapper
             label="Фамилия"
             withAsterisk
-            error={`${errors.lastname?.type ? errors.lastname?.type : ''}`}
+            error={`${errors.lastname?.type ? (VALIDATION_ERRORS[errors.lastname?.type as string] ? VALIDATION_ERRORS[errors.lastname?.type as string] : errors.lastname?.type) : ''}`}
          >
             <Input placeholder="Фамилия" {...register('lastname', { required: true, maxLength: 60 })} />
          </Input.Wrapper>
          <Input.Wrapper
             label="Имя"
             withAsterisk
-            error={`${errors.firstname?.type ? errors.firstname?.type : ''}`}
+            error={`${errors.firstname?.type ? (VALIDATION_ERRORS[errors.firstname?.type as string] ? VALIDATION_ERRORS[errors.firstname?.type as string] : errors.firstname?.type) : ''}`}
          >
             <Input placeholder="Имя" {...register('firstname', { required: true })} />
          </Input.Wrapper>
          <Input.Wrapper
             label="Номер телефона"
             withAsterisk
-            error={`${errors.phone?.type ? errors.phone?.type : ''}`}
+            error={`${errors.phone?.type ? (VALIDATION_ERRORS[errors.phone?.type as string] ? VALIDATION_ERRORS[errors.phone?.type as string] : errors.phone?.type) : ''}`}
          >
             <Input
                placeholder="Телефон"
