@@ -18,7 +18,7 @@ export const UserForm = () => {
       defaultValues: {
          lastname: user?.lastname,
          firstname: user?.firstname,
-         phone: user?.phone,
+         phone: user?.phone + '    ',
          email: user?.email,
          addres: user?.city
       }
