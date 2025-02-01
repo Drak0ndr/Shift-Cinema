@@ -1,8 +1,10 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { ReactNode, useEffect, useState } from 'react'
 
 import { getSession } from '@/api/requests/getSession'
+import { ROUTES } from '@/constants'
 import { getCookie } from '@/helpers/getCookie'
 
 import { AuthContext } from './AuthContext'
@@ -16,17 +18,28 @@ export const AuthContextProvider = ({
    defaultToken?: string
    children: ReactNode
 }) => {
+   const router = useRouter()
    const [user, setUser] = useState<User | undefined>(defaultUser)
    const [token, setToken] = useState<string | undefined>(defaultToken)
-   console.log(defaultUser, user)
+
    const logout = () => {
       setToken(undefined)
       setUser(undefined)
       document.cookie = 'authToken='
-      console.log('logout')
+      router.replace(ROUTES.ROOT)
+      router.refresh()
    }
 
-   const login = (token: string) => setToken(token)
+   const login = (token: string) => {
+      setToken(token)
+      document.cookie = `authToken=${token}`
+      getSession({ config: { validateStatus: (status) => status < 600 } }).then((data) => {
+         console.log(token, data)
+         setUser(data.data.user)
+         router.replace(ROUTES.ROOT)
+         router.refresh()
+      })
+   }
 
    useEffect(() => {
       const localToken = getCookie('authToken')
