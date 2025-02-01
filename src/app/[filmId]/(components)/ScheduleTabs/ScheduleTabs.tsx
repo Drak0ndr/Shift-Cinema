@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 import { HALLS, MONTHS, WEEK_DAYS } from '@/constants'
 import { useOrder } from '@/contexts'
-import { formatSeances, getDate } from '@/utils'
+import { formatSeances, getDate, getPlaces } from '@/utils'
 
 import styles from './ScheduleTabs.module.css'
 
@@ -17,7 +17,7 @@ interface ScheduleTabsProps extends BoxProps {
 export const ScheduleTabs = ({ data, filmId, ...props }: ScheduleTabsProps) => {
    const [tabValue, setTabValue] = useState(data[0].date)
    const [activeBtn, setActiveBtn] = useState({ hall: '', time: '' })
-   const { details, setSeance } = useOrder()
+   const { details, cache, setSeance } = useOrder()
 
    useEffect(() => {
       setActiveBtn({ hall: '', time: '' })
@@ -26,6 +26,10 @@ export const ScheduleTabs = ({ data, filmId, ...props }: ScheduleTabsProps) => {
    useEffect(() => {
       details.filmId = filmId
       setSeance(tabValue, activeBtn.time)
+      if (tabValue && activeBtn.time) {
+         cache.places = getPlaces(tabValue, activeBtn.time, data)
+         cache.hall = activeBtn.hall
+      }
       console.log(details)
    }, [activeBtn])
 

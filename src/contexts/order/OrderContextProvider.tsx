@@ -15,6 +15,8 @@ export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
       tickets: []
    }).current
 
+   const cache = useRef<{ places: Place[][]; hall: string }>({ places: [], hall: '' }).current
+
    const [stage, setStage] = useState(1)
 
    const setDetails = (obj: PostPaymentParams) => {
@@ -41,7 +43,9 @@ export const OrderContextProvider = ({ children }: { children: ReactNode }) => {
    }
 
    return (
-      <OrderContext.Provider value={{ details, setDetails, setSeance, setTickets, stage, setStage }}>
+      <OrderContext.Provider
+         value={{ cache, details, setDetails, setSeance, setTickets, stage, setStage }}
+      >
          {children}
       </OrderContext.Provider>
    )

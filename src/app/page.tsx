@@ -9,7 +9,8 @@ import { URL } from '@/constants'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-   title: 'ШИФТ CINEMA'
+   title: 'ШИФТ CINEMA',
+   description: 'Самый лучший кинотеатр'
 }
 
 const Home = async () => {

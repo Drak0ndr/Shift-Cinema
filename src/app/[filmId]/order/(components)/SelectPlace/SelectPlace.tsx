@@ -10,6 +10,7 @@ import { useOrder } from '@/contexts'
 import { calcOrderPrice, getActiveRowPlaces, getDate, getHall, getPlaces } from '@/utils'
 
 import { Matrix } from './components/Matrix/Matrix'
+import { MatrixSceleton } from './components/Matrix/Matrix.sceleton'
 import { TicketsForm } from './components/TicketsForm/TicketsForm'
 import styles from './SelectPlace.module.css'
 
@@ -56,7 +57,10 @@ export const SelectPlace = () => {
                </Box>
             )}
 
-            {!isMobile && <Matrix value={selectedPlace} places={places} onChange={setSelectedPlace} />}
+            {!isMobile && places && (
+               <Matrix value={selectedPlace} places={places} onChange={setSelectedPlace} />
+            )}
+            {!isMobile && !places && <MatrixSceleton places={order.cache.places} />}
             {isMobile && (
                <TicketsForm value={selectedPlace} places={places} onChange={setSelectedPlace} />
             )}
@@ -73,6 +77,7 @@ export const SelectPlace = () => {
                            getFilmScheduleResponse.data?.data.schedules
                         )
                      ]}
+                  {!getFilmScheduleResponse.data && HALLS[order.cache.hall]}
                </Text>
             </Box>
             <Box>

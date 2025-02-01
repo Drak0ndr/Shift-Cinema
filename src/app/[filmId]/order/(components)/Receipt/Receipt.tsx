@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Button, Card, Flex, Text } from '@mantine/core'
+import { Box, Button, Card, Flex, Skeleton, Text } from '@mantine/core'
 import Link from 'next/link'
 
 import { usePostPaymentQuery } from '@/api'
@@ -23,6 +23,7 @@ export const Receipt = () => {
                   Номер билета
                </Text>
                <Text>
+                  {postPaymentResponse.isLoading && <Skeleton h={24} w={100} radius={10} />}
                   {!postPaymentResponse.isLoading && postPaymentResponse.data?.data.order.orderNumber}
                </Text>
             </Box>
@@ -31,6 +32,7 @@ export const Receipt = () => {
                   Фильм
                </Text>
                <Text>
+                  {postPaymentResponse.isLoading && <Skeleton h={24} w={200} radius={10} />}
                   {!postPaymentResponse.isLoading && postPaymentResponse.data?.data.order.filmName}
                </Text>
             </Box>
@@ -44,6 +46,7 @@ export const Receipt = () => {
                <Text size="xs" c="#637083">
                   Места
                </Text>
+               {postPaymentResponse.isLoading && <Skeleton h={24} w={100} radius={10} />}
                {postPaymentResponse.data &&
                   getOrderPlaces(postPaymentResponse.data?.data.order.tickets).map((item) => (
                      <Text key={item.row}>{`${item.row} ряд -  ${item.columns.join(', ')}`}</Text>

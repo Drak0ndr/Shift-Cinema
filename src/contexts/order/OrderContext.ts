@@ -6,6 +6,7 @@ import { PostPaymentParams } from '@/api/requests/postPayment'
 
 interface OrderContext {
    details: PostPaymentParams
+   cache: { places: Place[][] | undefined, hall: string }
    setDetails: (details: PostPaymentParams) => void
    setSeance: (date: string, time: string) => void
    setTickets: (matrix: { [key: number]: number[] }) => void
@@ -21,6 +22,7 @@ export const OrderContext = createContext<OrderContext>({
       seance: { date: '', time: '' },
       tickets: []
    },
+   cache: { places: [], hall: '' },
    setDetails: () => {},
    setSeance: () => {},
    setTickets: () => {},
