@@ -9,12 +9,6 @@
     margin: 0 auto;
 }
 
-.btn {
-    border-radius: 16px;
-    padding: 16px 112px;
-    height: auto;
-}
-
 @media (width <= 800px) {
     .grid {
         gap: 16px;

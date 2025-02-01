@@ -1,22 +1,20 @@
-'use client'
-
 import '@mantine/core/styles.css'
+import './globals.css'
 
 import { Box, ColorSchemeScript, MantineProvider } from '@mantine/core'
-import { theme } from '@/constants/theme'
-import { Navigation } from '@/components/Navigation/Navigation'
+import { ModalsProvider } from '@mantine/modals'
 
-import './globals.css'
-import { inter } from '@/constants/fonts'
-import { useMediaQuery } from '@mantine/hooks'
-import { BottomNav } from '@/components/BottomNav/BottomNav'
+import { getSession } from '@/api'
+import { BottomNav, ConfirmModal, Navigation } from '@/components'
+import { inter, theme } from '@/constants'
+import { AuthContextProvider, QueryProvider } from '@/contexts'
 
-export default function RootLayout({
+export default async function RootLayout({
    children
 }: Readonly<{
    children: React.ReactNode
 }>) {
-   const isMobile = useMediaQuery('(width <= 500px)')
+   const getSessionResponce = await getSession({ config: { validateStatus: (status) => status < 600 } })
 
    return (
       <html lang="ru">
@@ -25,11 +23,17 @@ export default function RootLayout({
          </head>
          <body className={inter.className}>
             <MantineProvider theme={theme} defaultColorScheme="light">
-               {!isMobile && <Navigation />}
-               <Box component="main" className="container" mb={isMobile ? 65 : 10}>
-                  {children}
-               </Box>
-               {isMobile && <BottomNav/>}
+               <QueryProvider>
+                  <AuthContextProvider defaultUser={getSessionResponce.data.user}>
+                     <ModalsProvider modals={{ customConfirmModal: ConfirmModal }}>
+                        <Navigation />
+                        <Box component="main" className="container">
+                           {children}
+                        </Box>
+                        <BottomNav />
+                     </ModalsProvider>
+                  </AuthContextProvider>
+               </QueryProvider>
             </MantineProvider>
          </body>
       </html>
