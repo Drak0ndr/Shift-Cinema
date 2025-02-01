@@ -24,7 +24,7 @@ export const CardForm = () => {
 
    return (
       <Box component="form" maw={368} onSubmit={handleSubmit(onSubmit)}>
-         <Card mt={24} bg="#F3F4F6" component="form" w="100%">
+         <Card mt={24} bg="light-dark(#F3F4F6, var(--mantine-color-dark-6))" component="form" w="100%">
             <Input.Wrapper
                label="Номер"
                withAsterisk

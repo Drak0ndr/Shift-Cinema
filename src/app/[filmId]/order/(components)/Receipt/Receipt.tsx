@@ -56,11 +56,11 @@ export const Receipt = () => {
                Вся информация была продублирована в SMS
             </Text>
          </Card>
-         <Flex mt={24} gap={24} wrap="wrap-reverse">
-            <Button variant="default" miw={172} component={Link} href="/orders">
+         <Flex mt={24} gap={24} maw={400} wrap="wrap-reverse">
+            <Button variant="default" miw={172} flex={1} component={Link} href="/orders">
                Детали заказа
             </Button>
-            <Button miw={172} component={Link} href="/">
+            <Button miw={172} component={Link} flex={1} href="/">
                На главную
             </Button>
          </Flex>

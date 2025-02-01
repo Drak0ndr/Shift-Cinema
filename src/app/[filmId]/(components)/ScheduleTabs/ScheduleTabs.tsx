@@ -63,8 +63,7 @@ export const ScheduleTabs = ({ data, filmId, ...props }: ScheduleTabsProps) => {
                            {seances[hall].map((time) => (
                               <Button
                                  key={time}
-                                 variant="outline"
-                                 color="#141C24"
+                                 variant="default"
                                  className={`${styles.btn} ${activeBtn.hall == hall && activeBtn.time == time ? styles.active : ''}`}
                                  onClick={() =>
                                     activeBtn.hall == hall && activeBtn.time == time
