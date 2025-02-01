@@ -4,8 +4,8 @@ import { Button, Flex, Input } from '@mantine/core'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
 
-import { useAuth, useOrder } from '@/contexts'
 import { VALIDATION_ERRORS } from '@/constants/validationErrors'
+import { useAuth, useOrder } from '@/contexts'
 
 export const UserForm = () => {
    const { details, stage, setStage } = useOrder()

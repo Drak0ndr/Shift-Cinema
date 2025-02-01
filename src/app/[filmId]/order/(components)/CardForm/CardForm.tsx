@@ -4,8 +4,8 @@ import { Box, Button, Card, Flex, Input } from '@mantine/core'
 import { FieldValues, useForm } from 'react-hook-form'
 import InputMask from 'react-input-mask'
 
-import { useOrder } from '@/contexts'
 import { VALIDATION_ERRORS } from '@/constants/validationErrors'
+import { useOrder } from '@/contexts'
 
 export const CardForm = () => {
    const { details, stage, setStage } = useOrder()

@@ -1,6 +1,6 @@
 'use client'
 
-import { ActionIcon, Box, Flex, Text, ThemeIcon, useMantineColorScheme } from '@mantine/core'
+import { ActionIcon, Box, Flex, Text, useMantineColorScheme } from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -45,24 +45,26 @@ export const Navigation = () => {
                )}
                {user && (
                   <Flex align="center" gap={16} component={Link} href={ROUTES.ORDERS}>
-                     <TicketIcon fill={theme.colorScheme == 'dark' ? 'white' : ''}/>
+                     <TicketIcon fill={theme.colorScheme == 'dark' ? 'white' : ''} />
                      <Text>Билеты</Text>
                   </Flex>
                )}
             </Flex>
-            {
-               <ActionIcon
-                  variant="default"
-                  aria-label="Theme"
-                  onClick={theme.toggleColorScheme}
-               ></ActionIcon>
-            }
-            {!user && (
-               <Flex align="center" gap={16} component={Link} href={ROUTES.AUTH}>
-                  <LoginIcon fill={theme.colorScheme == 'dark' ? 'white' : ''}/>
-                  <Text>Войти</Text>
-               </Flex>
-            )}
+            <Flex align="center" gap={32}>
+               {
+                  <ActionIcon
+                     variant="default"
+                     aria-label="Theme"
+                     onClick={theme.toggleColorScheme}
+                  ></ActionIcon>
+               }
+               {!user && (
+                  <Flex align="center" gap={16} component={Link} href={ROUTES.AUTH}>
+                     <LoginIcon fill={theme.colorScheme == 'dark' ? 'white' : ''} />
+                     <Text>Войти</Text>
+                  </Flex>
+               )}
+            </Flex>
          </Flex>
       </Box>
    )
