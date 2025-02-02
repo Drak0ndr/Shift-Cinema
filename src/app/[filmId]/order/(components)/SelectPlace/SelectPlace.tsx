@@ -65,7 +65,7 @@ export const SelectPlace = () => {
                <TicketsForm value={selectedPlace} places={places} onChange={setSelectedPlace} />
             )}
             <Box>
-               <Text size="xs" c="#637083">
+               <Text size="xs">
                   Зал
                </Text>
                <Text>
@@ -81,13 +81,13 @@ export const SelectPlace = () => {
                </Text>
             </Box>
             <Box>
-               <Text size="xs" c="#637083">
+               <Text size="xs">
                   Дата и время
                </Text>
                <Text>{`${getDate(order.details.seance.date).getDate()} ${MONTHS[getDate(order.details.seance.date).getMonth()]} ${order.details.seance.time}`}</Text>
             </Box>
             <Box>
-               <Text size="xs" c="#637083">
+               <Text size="xs">
                   Места
                </Text>
                {selectedPlace &&
