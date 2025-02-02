@@ -114,8 +114,10 @@ export const SelectPlace = () => {
                miw={170}
                flex={1}
                onClick={() => {
-                  order.setStage(order.stage + 1)
                   order.setTickets(selectedPlace ? selectedPlace : [])
+                  if (order.details.tickets.length > 0) {
+                     order.setStage(order.stage + 1)
+                  }
                }}
             >
                Купить
