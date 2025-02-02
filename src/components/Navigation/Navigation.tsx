@@ -1,6 +1,12 @@
 'use client'
 
-import { ActionIcon, Box, Flex, Text, useMantineColorScheme } from '@mantine/core'
+import {
+   ActionIcon,
+   Box,
+   Flex,
+   Text,
+   useMantineColorScheme
+} from '@mantine/core'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -15,7 +21,8 @@ import styles from './Navigation.module.css'
 export const Navigation = () => {
    const { user } = useAuth()
    const theme = useMantineColorScheme()
-   console.log(theme.colorScheme == 'dark' ? 'white' : '#141C24')
+   const localTheme = localStorage.getItem('mantine-color-scheme-value')
+   console.log(localTheme)
    return (
       <Box component="nav" className={styles.nav}>
          <Flex align="center" justify="space-between" gap={32} className={styles.container}>
