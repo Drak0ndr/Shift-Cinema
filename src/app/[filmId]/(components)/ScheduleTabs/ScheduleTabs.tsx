@@ -58,7 +58,7 @@ export const ScheduleTabs = ({ data, filmId, ...props }: ScheduleTabsProps) => {
                   const seances = formatSeances(item.seances)
                   return Object.keys(seances).map((hall) => (
                      <Box key={hall}>
-                        <Text size="xs" c="#344051">
+                        <Text size="xs">
                            {HALLS[hall]}
                         </Text>
                         <Flex gap={8} mt={16} wrap="wrap">
